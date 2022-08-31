@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="height_470">470dp</dimen>
+    <dimen name="text_24sp">24sp</dimen>
+    <dimen name="text_289">289dp</dimen>
+    <dimen name="text_24">24dp</dimen>
+    <dimen name="next_radius">6dp</dimen>
+    <dimen name="indicator_bottom">40dp</dimen>
+    <dimen name="pager_item_height">600dp</dimen>
+</resources>

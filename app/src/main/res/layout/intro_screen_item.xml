@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/intro_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_470"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/intro1" />
+
+    <TextView
+        android:id="@+id/intro1_head_txt"
+        android:layout_width="@dimen/text_289"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_24"
+        android:layout_marginTop="@dimen/text_24"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/intro1_head_txt"
+        android:textColor="@color/text_bold_color"
+        android:textSize="@dimen/text_24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/intro_img" />
+
+    <TextView
+        android:id="@+id/intro1_desc_txt"
+        android:layout_width="318dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/intro1_desc"
+        android:textColor="@color/intro1_desc_color"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@id/intro1_head_txt"
+        app:layout_constraintTop_toBottomOf="@id/intro1_head_txt" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
