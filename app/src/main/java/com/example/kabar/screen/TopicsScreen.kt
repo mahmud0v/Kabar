@@ -12,8 +12,11 @@ import com.example.kabar.utils.LoadSelectableTopics
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import com.google.android.material.snackbar.Snackbar
 
 class TopicsScreen : Fragment(R.layout.select_topics_screen) {
+
+
     private val binding: SelectTopicsScreenBinding by viewBinding()
     private lateinit var adapter: FlexboxAdapter
 
@@ -21,6 +24,7 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
         adapter = FlexboxAdapter()
         initRV()
         setLayoutManager()
+        showSelectedTopicSize()
 
     }
 
@@ -38,6 +42,13 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
         binding.flexBox.layoutManager = layoutManager
     }
 
+    private fun showSelectedTopicSize() {
+
+        binding.topicsNextBtn.setOnClickListener {
+            Snackbar.make(it,"${adapter.getSelectedTopicList().size}",Snackbar.LENGTH_SHORT).show()
+
+         }
+    }
 
 
 }
