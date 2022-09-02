@@ -13,4 +13,5 @@
     <color name="default_dot_color">#A0A3BD</color>
     <color name="selected_dot_color">#1877F2</color>
     <color name="next_btn_color">#1877F2</color>
+    <color name="flow_item_stroke">#1877F2</color>
 </resources>

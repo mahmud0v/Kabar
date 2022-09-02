@@ -7,4 +7,7 @@
     <dimen name="next_radius">6dp</dimen>
     <dimen name="indicator_bottom">40dp</dimen>
     <dimen name="pager_item_height">600dp</dimen>
+    <dimen name="margin_99dp">99dp</dimen>
+    <dimen name="text_16sp">16sp</dimen>
+    <dimen name="margin_82dp">82dp</dimen>
 </resources>

@@ -27,7 +27,7 @@ class SplashScreen : Fragment(R.layout.splash_screen) {
                 requireActivity().getSharedPreferences("SharedPref", Context.MODE_PRIVATE)
             val currentItem = sharedPref.getInt("SharedPref", -1)
             if (currentItem == 2) {
-              findNavController().navigate(R.id.action_splashScreen_to_homeScreen)
+              findNavController().navigate(R.id.action_splashScreen_to_topicsScreen)
             } else {
                 findNavController().navigate(R.id.action_splashScreen_to_homeViewPager)
             }

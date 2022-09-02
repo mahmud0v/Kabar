@@ -6,5 +6,6 @@
     <string name="intro1_desc" >Follow the latest technology news from around the world</string>
     <string name="intro2_desc" >Observe happening news in different countries</string>
     <string name="intro3_desc" >Seeing hot news all of the universe</string>
-    <string name="next" translatable="false">Next</string>
+    <string name="next" >Next</string>
+    <string name="choose_topic" >Choose your Topics</string>
 </resources>

@@ -23,7 +23,7 @@ class HomeViewPager : Fragment(R.layout.intro1_screen) {
             val currentItem = binding.viewPager2Id.currentItem
             savePref(currentItem)
             if (currentItem == 2) {
-                findNavController().navigate(R.id.action_homeViewPager_to_homeScreen)
+                findNavController().navigate(R.id.action_homeViewPager_to_topicsScreen)
             } else {
                 binding.viewPager2Id.currentItem = currentItem+1
             }
