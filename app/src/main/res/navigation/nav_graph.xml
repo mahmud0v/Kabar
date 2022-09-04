@@ -38,6 +38,15 @@
         android:id="@+id/topicsScreen"
         tools:layout="@layout/select_topics_screen"
         android:name="com.example.kabar.screen.TopicsScreen"
-        android:label="TopicsScreen" />
+        android:label="TopicsScreen" >
+        <action
+            android:id="@+id/action_topicsScreen_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeScreen"
+        tools:layout="@layout/home_screen"
+        android:name="com.example.kabar.screen.HomeScreen"
+        android:label="HomeScreen" />
 
 </navigation>

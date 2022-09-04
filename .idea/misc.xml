@@ -3,17 +3,39 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bottom_nav_color.xml" value="0.12" />
+        <entry key="app/src/main/res/drawable/fill_bookmark_icon.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/fill_bottom_nav_item.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/fill_explore_icon.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/fill_profile_icon.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/flex_box_item.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/flow_layout_item.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/flow_select_item.xml" value="0.1245" />
+        <entry key="app/src/main/res/drawable/ic_bookmark.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_close.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_explore.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_fill_bookmark.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_fill_explore.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_fill_home.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_fill_profile.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_filter.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_notif.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_notification.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_vector.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/intro1_img.xml" value="0.101" />
         <entry key="app/src/main/res/drawable/next_btn_color.xml" value="0.101" />
+        <entry key="app/src/main/res/drawable/search_back.xml" value="0.12" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.29791666666666666" />
         <entry key="app/src/main/res/layout/flexbox_item.xml" value="0.296875" />
-        <entry key="app/src/main/res/layout/home_screen.xml" value="0.29791666666666666" />
+        <entry key="app/src/main/res/layout/home_screen.xml" value="0.33229813664596275" />
         <entry key="app/src/main/res/layout/intro1_screen.xml" value="0.311083984375" />
         <entry key="app/src/main/res/layout/intro_screen_item.xml" value="0.20232696533203126" />
         <entry key="app/src/main/res/layout/select_topics_screen.xml" value="0.19636462983630956" />
         <entry key="app/src/main/res/layout/splash_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.1" />
       </map>
     </option>
   </component>

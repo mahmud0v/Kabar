@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kabar.R
 import com.example.kabar.adapter.FlexboxAdapter
@@ -24,8 +25,7 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
         adapter = FlexboxAdapter()
         initRV()
         setLayoutManager()
-        showSelectedTopicSize()
-
+        directionNextPage()
     }
 
 
@@ -42,11 +42,10 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
         binding.flexBox.layoutManager = layoutManager
     }
 
-    private fun showSelectedTopicSize() {
+    private fun directionNextPage() {
 
         binding.topicsNextBtn.setOnClickListener {
-            Snackbar.make(it,"${adapter.getSelectedTopicList().size}",Snackbar.LENGTH_SHORT).show()
-
+             findNavController().navigate(R.id.action_topicsScreen_to_homeScreen)
          }
     }
 

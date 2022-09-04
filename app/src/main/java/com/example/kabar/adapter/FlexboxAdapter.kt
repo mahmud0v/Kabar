@@ -1,11 +1,9 @@
 package com.example.kabar.adapter
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -61,7 +59,7 @@ class FlexboxAdapter : RecyclerView.Adapter<FlexboxAdapter.FlexboxViewHolder>() 
                     selectedTopicList.remove(topic)
                     false
                 } else {
-                    btn.setBackgroundResource(R.drawable.flow_select_item)
+                    btn.setBackgroundResource(R.drawable.flex_box_item)
                     btn.setTextColor(Color.WHITE)
                     selectedTopicList.add(topic)
                     true

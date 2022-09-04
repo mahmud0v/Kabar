@@ -5,5 +5,4 @@ import com.example.kabar.R
 
 class HomeScreen : Fragment(R.layout.home_screen) {
 
-
 }
