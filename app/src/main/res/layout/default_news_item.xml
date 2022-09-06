@@ -35,8 +35,7 @@
         android:textColor="#000000"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Ukraine's President Zelensky to BBC: Blood money being paid..."
-
+        tools:text="@string/mock_text"
         />
 
     <TextView

@@ -36,7 +36,7 @@
         android:textSize="@dimen/text_16sp"
         app:layout_constraintTop_toBottomOf="@id/trend_card"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Ukraine's President Zelensky to BBC: Blood money being paid for Russian oil"
+        android:text="@string/mock_text"
         />
 
 
