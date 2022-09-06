@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="380dp"
+    android:layout_marginTop="8dp"
+    android:layout_height="112dp"
+    >
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/def_news_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@drawable/ship" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/def_news_head_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/poppins_regular"
+        android:lines="3"
+        android:textColor="#000000"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ukraine's President Zelensky to BBC: Blood money being paid..."
+
+        />
+
+    <TextView
+        android:id="@+id/def_news_source"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:textColor="#C62626"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/def_news_head_text"
+        tools:text="BBC News" />
+
+    <ImageView
+        android:id="@+id/clock_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:src="@drawable/ic_clock"
+        app:layout_constraintBottom_toBottomOf="@id/def_news_source"
+        app:layout_constraintLeft_toRightOf="@id/def_news_source"
+        app:layout_constraintTop_toTopOf="@id/def_news_source" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="#4E4B66"
+        app:layout_constraintBottom_toBottomOf="@id/clock_img"
+        app:layout_constraintLeft_toRightOf="@id/clock_img"
+        app:layout_constraintTop_toTopOf="@id/clock_img"
+        tools:text="4 hour ago" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

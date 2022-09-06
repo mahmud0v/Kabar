@@ -23,15 +23,23 @@ class SplashScreen : Fragment(R.layout.splash_screen) {
         }
 
         override fun onFinish() {
-            val sharedPref =
-                requireActivity().getSharedPreferences("SharedPref", Context.MODE_PRIVATE)
-            val currentItem = sharedPref.getInt("SharedPref", -1)
-            if (currentItem == 2) {
-              findNavController().navigate(R.id.action_splashScreen_to_topicsScreen)
-            } else {
-                findNavController().navigate(R.id.action_splashScreen_to_homeViewPager)
-            }
+           if (getViewPagerCondition()!=2){
+               findNavController().navigate(R.id.action_splashScreen_to_homeViewPager)
+           }else if (getTopicsCondition()){
+               findNavController().navigate(R.id.action_splashScreen_to_homeScreen)
+           }else{
+               findNavController().navigate(R.id.action_splashScreen_to_topicsScreen)
+           }
         }
 
     }
+
+    private fun getTopicsCondition() =
+        requireActivity().getSharedPreferences("topics",Context.MODE_PRIVATE).getBoolean("topics",false)
+
+
+
+    private fun getViewPagerCondition() =
+        requireActivity().getSharedPreferences("SharedPref",Context.MODE_PRIVATE).getInt("SharedPref",-1)
+
 }

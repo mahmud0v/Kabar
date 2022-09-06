@@ -1,5 +1,6 @@
 package com.example.kabar.screen
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -20,12 +21,20 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
 
     private val binding: SelectTopicsScreenBinding by viewBinding()
     private lateinit var adapter: FlexboxAdapter
+    private var condition = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         adapter = FlexboxAdapter()
         initRV()
         setLayoutManager()
         directionNextPage()
+        saveCondition()
+    }
+
+
+    private fun saveCondition() {
+        val sharedPref = requireActivity().getSharedPreferences("topics", Context.MODE_PRIVATE)
+        sharedPref.edit().putBoolean("topics", condition).commit()
     }
 
 
@@ -45,8 +54,10 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
     private fun directionNextPage() {
 
         binding.topicsNextBtn.setOnClickListener {
-             findNavController().navigate(R.id.action_topicsScreen_to_homeScreen)
-         }
+            condition = true
+            saveCondition()
+            findNavController().navigate(R.id.action_topicsScreen_to_homeScreen)
+        }
     }
 
 

@@ -10,7 +10,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/text_24"
         android:layout_marginTop="@dimen/text_24"
-        android:src="@drawable/back_icon"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_back"
+        android:clickable="true"
+        android:padding="3dp"
+        android:focusable="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

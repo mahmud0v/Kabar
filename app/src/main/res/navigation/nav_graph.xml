@@ -19,6 +19,11 @@
             app:destination="@id/topicsScreen"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreen_to_homeScreen"
+            app:destination="@id/homeScreen"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
 
 
     </fragment>
