@@ -6,14 +6,14 @@ import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kabar.R
 import com.example.kabar.databinding.IntroScreenItemBinding
-import com.example.kabar.utils.LoadPagerData
+import com.example.kabar.utils.PagerData
 
 class ViewPagerScreen : Fragment(R.layout.intro_screen_item) {
 
     private val binding: IntroScreenItemBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val list = LoadPagerData.getPagerData()
+        val list = PagerData.getPagerData()
         val position = requireArguments().getInt("key")
         binding.introImg.setImageResource(list[position].imageRes)
         binding.intro1HeadTxt.text = getString(list[position].headText)

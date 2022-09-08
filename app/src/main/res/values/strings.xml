@@ -9,4 +9,7 @@
     <string name="next" >Next</string>
     <string name="choose_topic" >Choose your Topics</string>
     <string name="mock_text">Ukraine\'s President Zelensky to BBC: Blood money being paid for Russian oil</string>
+    <string name="see_all">See all</string>
+    <string name="trending">Trending</string>
+    <string name="fake_text">Wind power produced more electricity than coal and nucle...</string>
 </resources>

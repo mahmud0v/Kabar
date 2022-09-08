@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +10,7 @@
         android:id="@+id/kabar_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/text_24"
+        android:layout_marginStart="@dimen/text_24"
         android:layout_marginTop="@dimen/text_24"
         android:src="@drawable/ic_vector"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -25,6 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="@dimen/text_24"
@@ -32,22 +34,109 @@
         android:layout_marginEnd="@dimen/text_24"
         android:background="@drawable/search_back"
         app:closeIcon="@drawable/ic_close"
+        app:iconifiedByDefault="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/kabar_img"
         app:queryHint="Search"
-        app:iconifiedByDefault="false"
         app:searchHintIcon="@null"
-        app:searchIcon="@drawable/ic_search"/>
+        app:searchIcon="@drawable/ic_search" />
 
+    <TextView
+        android:id="@+id/trending_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="@string/trending"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_16sp"
+        app:layout_constraintLeft_toLeftOf="@id/search_view"
+        app:layout_constraintTop_toBottomOf="@id/search_view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/text_24"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/see_all"
+        android:textColor="#4E4B66"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/trending_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/trending_text" />
+
+    <include
+        android:id="@+id/trending_include"
+        layout="@layout/trending_news_item"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_24"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/text_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trending_text" />
+
+
+    <TextView
+        android:id="@+id/latest_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_24"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="Latest"
+        android:textColor="#000000"
+        android:textSize="@dimen/text_16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trending_include" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/text_24"
+        android:fontFamily="@font/"
+        android:text="@string/see_all"
+        android:textColor="#4E4B66"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/latest_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/latest_text" />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:tabIndicator="@drawable/tab_indicator"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="10dp"
+        app:tabIndicatorFullWidth="false"
+        app:layout_constraintTop_toBottomOf="@id/latest_text"
+        app:tabMode="scrollable"
+        android:textAlignment="textStart"
+        app:tabTextColor="#4E4B66"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextAppearance="@style/tabTextFont" />
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/tab_layout"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:itemIconTint="@color/bottom_nav_color"
-        app:labelVisibilityMode="labeled"
         app:itemTextColor="@color/bottom_nav_color"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_navigation" />
 

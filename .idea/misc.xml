@@ -33,12 +33,14 @@
         <entry key="app/src/main/res/drawable/intro1_img.xml" value="0.101" />
         <entry key="app/src/main/res/drawable/next_btn_color.xml" value="0.101" />
         <entry key="app/src/main/res/drawable/search_back.xml" value="0.12" />
+        <entry key="app/src/main/res/drawable/tab_indicator.xml" value="0.1495" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2209589640299479" />
         <entry key="app/src/main/res/layout/default_news_item.xml" value="0.28479105631510404" />
         <entry key="app/src/main/res/layout/flexbox_item.xml" value="0.296875" />
-        <entry key="app/src/main/res/layout/home_screen.xml" value="0.25094285100143143" />
+        <entry key="app/src/main/res/layout/home_screen.xml" value="0.2927031049076815" />
         <entry key="app/src/main/res/layout/intro1_screen.xml" value="0.22972869873046878" />
         <entry key="app/src/main/res/layout/intro_screen_item.xml" value="0.20232696533203126" />
+        <entry key="app/src/main/res/layout/latest_news_recycler.xml" value="0.17475891113281256" />
         <entry key="app/src/main/res/layout/select_topics_screen.xml" value="0.1483734130859375" />
         <entry key="app/src/main/res/layout/splash_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/trending_news_item.xml" value="0.296875" />

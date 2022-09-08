@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="380dp"
     android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
     android:layout_height="112dp"
     >
 
@@ -67,6 +68,7 @@
         android:layout_marginStart="4dp"
         android:fontFamily="@font/poppins_regular"
         android:textColor="#4E4B66"
+        android:id="@+id/hour_text"
         app:layout_constraintBottom_toBottomOf="@id/clock_img"
         app:layout_constraintLeft_toRightOf="@id/clock_img"
         app:layout_constraintTop_toTopOf="@id/clock_img"

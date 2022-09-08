@@ -3,7 +3,7 @@ package com.example.kabar.utils
 import com.example.kabar.R
 import com.example.kabar.model.PagerInfo
 
-class LoadPagerData {
+class PagerData {
 
     companion object {
 

@@ -1,6 +1,6 @@
 package com.example.kabar.utils
 
-class LoadSelectableTopics {
+class SelectableTopicsData{
 
 
     companion object {

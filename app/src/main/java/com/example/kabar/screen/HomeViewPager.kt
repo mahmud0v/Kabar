@@ -10,10 +10,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kabar.R
 import com.example.kabar.adapter.ViewPagerAdapter
 import com.example.kabar.databinding.Intro1ScreenBinding
-import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeViewPager : Fragment(R.layout.intro1_screen) {
     private val binding: Intro1ScreenBinding by viewBinding()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val pagerAdapter = ViewPagerAdapter(this)

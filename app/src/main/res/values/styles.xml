@@ -3,4 +3,11 @@
     <style name="cursorColor" parent="Widget.AppCompat.AutoCompleteTextView">
      <item name="android:textCursorDrawable">@drawable/cursor</item>
     </style>
+
+    <style name="tabTextFont" parent="TextAppearance.AppCompat.Title"
+        >
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text_16sp</item>
+        <item name="android:textColor">#4E4B66</item>
+    </style>
 </resources>
