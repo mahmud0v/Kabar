@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/splashScreen"
         tools:layout="@layout/splash_screen"
-        android:name="com.example.kabar.screen.SplashScreen"
+        android:name="com.example.kabar.ui.screen.SplashScreen"
         android:label="SplashScreen" >
 
         <action
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/homeViewPager"
         tools:layout="@layout/intro1_screen"
-        android:name="com.example.kabar.screen.HomeViewPager"
+        android:name="com.example.kabar.ui.viewpager.HomeViewPager"
         android:label="HomeViewPager" >
 
         <action
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/topicsScreen"
         tools:layout="@layout/select_topics_screen"
-        android:name="com.example.kabar.screen.TopicsScreen"
+        android:name="com.example.kabar.ui.screen.TopicsScreen"
         android:label="TopicsScreen" >
         <action
             android:id="@+id/action_topicsScreen_to_homeScreen"
@@ -51,7 +51,24 @@
     <fragment
         android:id="@+id/homeScreen"
         tools:layout="@layout/home_screen"
-        android:name="com.example.kabar.screen.HomeScreen"
-        android:label="HomeScreen" />
+        android:name="com.example.kabar.ui.screen.HomeScreen"
+        android:label="HomeScreen" >
+        <action
+            android:id="@+id/action_homeScreen_to_latestNewsScreen"
+            app:destination="@id/latestNewsScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_trendingNews"
+            app:destination="@id/trendingNews" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/latest_news"
+        android:id="@+id/latestNewsScreen"
+        android:name="com.example.kabar.ui.screen.LatestNewsScreen"
+        android:label="LatestNewsScreen" />
+    <fragment
+        android:id="@+id/trendingNews"
+        tools:layout="@layout/trending_news"
+        android:name="com.example.kabar.ui.screen.TrendingNewsScreen"
+        android:label="TrendingNews" />
 
 </navigation>

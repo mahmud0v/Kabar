@@ -1,4 +1,4 @@
-package com.example.kabar.screen
+package com.example.kabar.ui.screen
 
 import android.content.Context
 import android.os.Bundle
@@ -18,7 +18,7 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
 
 
     private val binding: SelectTopicsScreenBinding by viewBinding()
-    private lateinit var adapter: FlexboxAdapter
+    private var adapter: FlexboxAdapter? = null
     private var condition = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +38,7 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
 
     private fun initRV() {
         val topics = SelectableTopicsData.getTopics()
-        adapter.differ.submitList(topics)
+        adapter!!.differ.submitList(topics)
     }
 
     private fun setLayoutManager() {

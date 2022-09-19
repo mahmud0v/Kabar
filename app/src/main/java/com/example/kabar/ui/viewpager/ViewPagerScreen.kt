@@ -1,4 +1,4 @@
-package com.example.kabar.screen
+package com.example.kabar.ui.viewpager
 
 import android.os.Bundle
 import android.view.View

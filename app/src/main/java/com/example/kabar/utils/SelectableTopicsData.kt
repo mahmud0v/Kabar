@@ -7,9 +7,16 @@ class SelectableTopicsData{
 
         fun getTopics(): List<String> {
             return listOf(
-                "National", "Health", "Sport", "Lifestyle",
-                "International", "Fashion", "Business", "Art", "Technology", "Science",
-                "Politics"
+                "Business","Lifestyle","Health",
+                "Science","Sport","Technology","Art","International","Fashion",
+                "Politics","National"
+            )
+        }
+
+        fun getHeadlineCategories():List<String>{
+            return listOf(
+                "business","general","health",
+                "science","sports","technology","entertainment"
             )
         }
     }
