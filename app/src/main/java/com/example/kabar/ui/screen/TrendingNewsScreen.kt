@@ -29,6 +29,7 @@ class TrendingNewsScreen : Fragment(R.layout.trending_news) {
         loadTopic()
         initialRecycler()
         returnBack()
+        clickEvent()
     }
 
 
@@ -64,19 +65,21 @@ class TrendingNewsScreen : Fragment(R.layout.trending_news) {
 
     private fun loadData(list: List<Articles>) {
         binding.spinKit2.visibility = View.GONE
-        Toast.makeText(requireContext(),"${list.size}",Toast.LENGTH_SHORT).show()
         adapter!!.differ.submitList(list)
     }
 
-    private fun returnBack(){
+    private fun returnBack() {
         binding.backBtn.setOnClickListener {
             findNavController().navigateUp()
         }
     }
 
-    private fun clickEvent(){
+    private fun clickEvent() {
         adapter?.onItemClick = { data ->
-            Toast.makeText(requireContext(),data.source.name,Toast.LENGTH_SHORT).show()
+            val bundle = Bundle().apply {
+                putParcelable("key", data)
+            }
+            findNavController().navigate(R.id.action_trendingNews_to_infoItemScreen,bundle)
         }
     }
 

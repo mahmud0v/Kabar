@@ -1,5 +1,9 @@
 package com.example.kabar.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Articles(
    val source:Source,
    val author:String?,
@@ -10,4 +14,4 @@ data class Articles(
    val publishedAt:String?,
    val content:String?
 
-)
+) : Parcelable

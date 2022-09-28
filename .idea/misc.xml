@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/back_ripple.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/bottom_layout.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bottom_nav_color.xml" value="0.12" />
         <entry key="app/src/main/res/drawable/cursor.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/fill_bookmark_icon.xml" value="0.129" />
@@ -15,6 +16,7 @@
         <entry key="app/src/main/res/drawable/flow_layout_item.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/flow_select_item.xml" value="0.1245" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_back_trend.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_bookmark.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/ic_close.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/ic_explore.xml" value="0.129" />
@@ -25,6 +27,7 @@
         <entry key="app/src/main/res/drawable/ic_filter.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.129" />
+        <entry key="app/src/main/res/drawable/ic_like.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_notif.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/ic_notification.xml" value="0.129" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.129" />
@@ -38,6 +41,7 @@
         <entry key="app/src/main/res/layout/default_news_item.xml" value="0.28479105631510404" />
         <entry key="app/src/main/res/layout/flexbox_item.xml" value="0.296875" />
         <entry key="app/src/main/res/layout/home_screen.xml" value="0.12171404432463337" />
+        <entry key="app/src/main/res/layout/info_item_screen.xml" value="0.1807081807081807" />
         <entry key="app/src/main/res/layout/intro1_screen.xml" value="0.22972869873046878" />
         <entry key="app/src/main/res/layout/intro_screen_item.xml" value="0.20232696533203126" />
         <entry key="app/src/main/res/layout/latest_news.xml" value="0.22764739990234384" />

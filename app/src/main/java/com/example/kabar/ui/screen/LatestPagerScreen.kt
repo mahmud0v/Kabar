@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kabar.R
@@ -27,7 +28,8 @@ class LatestPagerScreen : Fragment(R.layout.latest_news_recycler) {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-      initRecycler()
+        initRecycler()
+        clickEvent()
     }
 
 
@@ -37,9 +39,20 @@ class LatestPagerScreen : Fragment(R.layout.latest_news_recycler) {
         val position = requireArguments().getInt("key")
         val topics = SelectableTopicsData.getHeadlineCategories()
         viewModel.getTrendNews(topics[position])
-        viewModel.trendNewsLiveData.observe(viewLifecycleOwner,observer)
+        viewModel.trendNewsLiveData.observe(viewLifecycleOwner, observer)
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun clickEvent() {
+        adapter!!.onItemClick = { data ->
+            val bundle = Bundle().apply {
+               putParcelable("key",data)
+            }
+
+            findNavController().navigate(R.id.action_homeScreen_to_infoItemScreen,bundle)
+
+        }
     }
 
     private val observer = Observer<KabarResult<NewsResponse>> {
@@ -55,11 +68,11 @@ class LatestPagerScreen : Fragment(R.layout.latest_news_recycler) {
         }
     }
 
-    private fun list(list:List<Articles>): List<Articles>{
+    private fun list(list: List<Articles>): List<Articles> {
         binding.spinKit2.visibility = View.GONE
         val newList = mutableListOf<Articles>()
-        val limit = list.size-1
-        for (i in 0..limit){
+        val limit = list.size - 1
+        for (i in 0..limit) {
             newList.add(list[i])
         }
 

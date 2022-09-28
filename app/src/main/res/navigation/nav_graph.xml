@@ -59,6 +59,9 @@
         <action
             android:id="@+id/action_homeScreen_to_trendingNews"
             app:destination="@id/trendingNews" />
+        <action
+            android:id="@+id/action_homeScreen_to_infoItemScreen"
+            app:destination="@id/infoItemScreen" />
     </fragment>
     <fragment
         tools:layout="@layout/latest_news"
@@ -69,6 +72,15 @@
         android:id="@+id/trendingNews"
         tools:layout="@layout/trending_news"
         android:name="com.example.kabar.ui.screen.TrendingNewsScreen"
-        android:label="TrendingNews" />
+        android:label="TrendingNews" >
+        <action
+            android:id="@+id/action_trendingNews_to_infoItemScreen"
+            app:destination="@id/infoItemScreen" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/info_item_screen"
+        android:id="@+id/infoItemScreen"
+        android:name="com.example.kabar.ui.screen.InfoItemScreen"
+        android:label="InfoItemScreen" />
 
 </navigation>

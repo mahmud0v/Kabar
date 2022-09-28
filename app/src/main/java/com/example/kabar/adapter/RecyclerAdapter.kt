@@ -21,7 +21,7 @@ import java.util.*
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-
+    var onItemClick: ((Articles) -> Unit)? = null
     private val diffItemCallback = object : DiffUtil.ItemCallback<Articles>() {
         override fun areItemsTheSame(oldItem: Articles, newItem: Articles) =
             oldItem.url == newItem.url
@@ -45,16 +45,15 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val data = differ.currentList[position]
         val imgView: ImageView = holder.itemView.findViewById(R.id.def_news_img)
-        if (data.urlToImage!=null){
+        if (data.urlToImage != null) {
             Glide.with(holder.itemView).load(data.urlToImage).into(imgView)
-        }
-        else{
+        } else {
             imgView.setImageResource(R.drawable.breaking_news)
         }
         val headText: TextView = holder.itemView.findViewById(R.id.def_news_head_text)
-        if (data.description!=null){
+        if (data.description != null) {
             headText.text = data.description
-        }else {
+        } else {
             headText.text = holder.itemView.resources.getString(R.string.fake_desc)
         }
 
@@ -62,12 +61,14 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         source.text = data.source.name
         val hour: TextView = holder.itemView.findViewById(R.id.hour_text)
         hour.text = timeFormat(data.publishedAt)
-
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(data)
+        }
     }
 
     @SuppressLint("SimpleDateFormat")
-    private fun timeFormat(publishedAt: String?):String {
-        if (publishedAt!=null) {
+    private fun timeFormat(publishedAt: String?): String {
+        if (publishedAt != null) {
             val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss\'Z\'")
             simpleDateFormat.timeZone = TimeZone.getTimeZone("GMT+5")
             var time = 0L
@@ -81,7 +82,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             val prettyTime = PrettyTime(Locale.getDefault())
             return prettyTime.format(Date(time))
-        }else{
+        } else {
             return "1 week ago"
         }
 
@@ -91,12 +92,12 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     inner class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-       init {
+        init {
 
-           fun bind(){
+            fun bind() {
 
-           }
-       }
+            }
+        }
     }
 
 

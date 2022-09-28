@@ -29,11 +29,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
-
 class HomeScreen : Fragment(R.layout.home_screen) {
     private val binding: HomeScreenBinding by viewBinding()
     private var pagerAdapter: PagerAdapter? = null
     private val viewModel: NewsViewModel by viewModels()
+    private var trendNews: Articles? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,6 +42,7 @@ class HomeScreen : Fragment(R.layout.home_screen) {
         transitionLatestNews()
         transitionTrendingNews()
         trendingNews()
+        clickTrendNews()
     }
 
 
@@ -76,24 +77,24 @@ class HomeScreen : Fragment(R.layout.home_screen) {
         }
     }
 
-    private fun bindingTrendNews(list: List<Articles>) {
+    private fun bindingTrendNews(list: List<Articles>): Articles {
         binding.spinKit.visibility = View.GONE
         val limit = list.size - 1
-        var data = list[0]
+        trendNews = list[0]
         for (i in 0..limit) {
             if (list[i].urlToImage != null && list[i].url != null && list[i].description
                 != null && list[i].author != null && list[i].title != null && list[i].publishedAt != null && list[i].content != null
             ) {
-                data = list[i]
+                trendNews = list[i]
                 break
             }
         }
-        Glide.with(binding.trendingInclude.root).load(data.urlToImage)
+        Glide.with(binding.trendingInclude.root).load(trendNews!!.urlToImage)
             .into(binding.trendingInclude.trendImg)
-        binding.trendingInclude.trendHeadTxt.text = data.description
-        binding.trendingInclude.trendNewsSource.text = data.source.name
-        binding.trendingInclude.trendHour.text = timeFormat(data.publishedAt)
-
+        binding.trendingInclude.trendHeadTxt.text = trendNews!!.description
+        binding.trendingInclude.trendNewsSource.text = trendNews!!.source.name
+        binding.trendingInclude.trendHour.text = timeFormat(trendNews!!.publishedAt)
+        return trendNews!!
     }
 
     private fun transitionLatestNews() {
@@ -105,6 +106,17 @@ class HomeScreen : Fragment(R.layout.home_screen) {
     private fun transitionTrendingNews() {
         binding.trendingSeeAll.setOnClickListener {
             findNavController().navigate(R.id.action_homeScreen_to_trendingNews)
+        }
+    }
+
+
+    private fun clickTrendNews() {
+        binding.trendingInclude.trendingLayout.setOnClickListener {
+            val bundle = Bundle().apply {
+                putParcelable("key", trendNews)
+            }
+
+            findNavController().navigate(R.id.action_homeScreen_to_infoItemScreen, bundle)
         }
     }
 

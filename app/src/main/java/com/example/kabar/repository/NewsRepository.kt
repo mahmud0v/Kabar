@@ -34,11 +34,11 @@ class NewsRepository @Inject constructor(
         return if (latestNews.isSuccessful) {
             flow {
                 emit(KabarResult.Success(latestNews.body()!!))
-            }.flowOn(Dispatchers.IO)
+            }
         } else {
             flow<KabarResult<NewsResponse>> {
                 emit(KabarResult.Error(latestNews.message()))
-            }.flowOn(Dispatchers.IO)
+            }
         }
     }
 }

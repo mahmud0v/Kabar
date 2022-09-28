@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+
+       >
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+
+           >
+
+           <ImageView
+               android:id="@+id/back_btn"
+               android:background="?attr/selectableItemBackgroundBorderless"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="24dp"
+               android:layout_marginTop="24dp"
+               android:padding="3dp"
+               android:src="@drawable/ic_back"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <TextView
+               android:id="@+id/news_source"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="3dp"
+               android:layout_marginTop="16dp"
+               android:fontFamily="@font/poppins_semi_bold"
+               android:textColor="#C62626"
+               android:textSize="16sp"
+               app:layout_constraintLeft_toLeftOf="@id/back_btn"
+               app:layout_constraintTop_toBottomOf="@id/back_btn"
+               tools:text="BBC News" />
+
+           <TextView
+               android:id="@+id/news_hour"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:fontFamily="@font/poppins_regular"
+               android:textColor="#4E4B66"
+               android:textSize="14sp"
+               app:layout_constraintLeft_toLeftOf="@id/news_source"
+               app:layout_constraintTop_toBottomOf="@id/news_source"
+               tools:text="8 hour ago" />
+
+           <com.google.android.material.card.MaterialCardView
+               android:id="@+id/news_card"
+               android:layout_width="match_parent"
+               android:layout_height="228dp"
+               android:layout_marginStart="@dimen/text_24"
+               android:layout_marginTop="16dp"
+               android:layout_marginEnd="@dimen/text_24"
+               app:cardCornerRadius="8dp"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/news_hour">
+
+               <ImageView
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:id="@+id/head_img"
+                   android:scaleType="centerCrop"
+                   tools:src="@drawable/trend" />
+           </com.google.android.material.card.MaterialCardView>
+
+
+           <TextView
+               android:id="@+id/info_desc"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="@dimen/text_24"
+               android:layout_marginTop="16dp"
+               android:layout_marginEnd="@dimen/text_24"
+               android:fontFamily="@font/poppins_regular"
+               android:lines="4"
+               android:text="@string/fake_desc"
+               android:textColor="#000000"
+               android:textSize="@dimen/text_24sp"
+               app:layout_constraintLeft_toLeftOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/news_card" />
+
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:layout_constraintTop_toBottomOf="@id/info_desc"
+               android:layout_marginTop="16dp"
+               android:textSize="16dp"
+               android:textColor="#4E4B66"
+               android:id="@+id/news_content"
+               android:fontFamily="@font/poppins_regular"
+               android:text="@string/news_content"
+               android:layout_marginStart="@dimen/text_24"
+               android:layout_marginEnd="@dimen/text_24"
+               />
+
+
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+   </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
