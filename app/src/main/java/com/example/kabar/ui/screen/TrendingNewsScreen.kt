@@ -14,7 +14,7 @@ import com.example.kabar.adapter.TrendingRecyclerAdapter
 import com.example.kabar.databinding.TrendingNewsBinding
 import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
-import com.example.kabar.ui.viewmodel.NewsViewModel
+import com.example.kabar.ui.viewmodel.HomeViewModel
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class TrendingNewsScreen : Fragment(R.layout.trending_news) {
     private val binding: TrendingNewsBinding by viewBinding()
     private var adapter: TrendingRecyclerAdapter? = null
-    private val viewModel: NewsViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadTopic()

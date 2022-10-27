@@ -1,13 +1,8 @@
 package com.example.kabar.ui.screen
 
-import android.content.Context
-import android.net.ConnectivityManager
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.view.View
-import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.appcompat.widget.ViewUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -19,25 +14,18 @@ import com.example.kabar.adapter.PagerAdapter
 import com.example.kabar.databinding.HomeScreenBinding
 import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
-import com.example.kabar.ui.viewmodel.NewsViewModel
+import com.example.kabar.ui.viewmodel.HomeViewModel
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
-import com.example.kabar.utils.TimeFormat
 import com.example.kabar.utils.TimeFormat.getTimeFormat
-import com.github.ybq.android.spinkit.style.DoubleBounce
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import org.ocpsoft.prettytime.PrettyTime
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.*
 
 @AndroidEntryPoint
 class HomeScreen : Fragment(R.layout.home_screen) {
     private val binding: HomeScreenBinding by viewBinding()
     private var pagerAdapter: PagerAdapter? = null
-    private val viewModel: NewsViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
     private var trendNews: Articles? = null
 
 

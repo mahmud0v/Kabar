@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface NewsDao {
 
     @Query("SELECT *FROM Kabar")
-    suspend fun getAllNews() : LiveData<List<Articles>>
+    suspend fun getAllNews() : Flow<List<Articles>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNews(articles: Articles)

@@ -2,7 +2,6 @@ package com.example.kabar.ui.screen
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -14,7 +13,7 @@ import com.example.kabar.adapter.RecyclerAdapter
 import com.example.kabar.databinding.LatestNewsRecyclerBinding
 import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
-import com.example.kabar.ui.viewmodel.NewsViewModel
+import com.example.kabar.ui.viewmodel.HomeViewModel
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
 import com.google.android.material.snackbar.Snackbar
@@ -24,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class LatestPagerScreen : Fragment(R.layout.latest_news_recycler) {
     private val binding: LatestNewsRecyclerBinding by viewBinding()
     private var adapter: RecyclerAdapter? = null
-    private val viewModel: NewsViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModels()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

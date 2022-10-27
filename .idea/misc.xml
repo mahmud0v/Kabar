@@ -41,9 +41,10 @@
         <entry key="app/src/main/res/drawable/search_back.xml" value="0.12" />
         <entry key="app/src/main/res/drawable/tab_indicator.xml" value="0.1495" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2209589640299479" />
+        <entry key="app/src/main/res/layout/bookmark_screen.xml" value="0.20349426269531254" />
         <entry key="app/src/main/res/layout/default_news_item.xml" value="0.28479105631510404" />
         <entry key="app/src/main/res/layout/flexbox_item.xml" value="0.296875" />
-        <entry key="app/src/main/res/layout/home_screen.xml" value="0.21428148817228962" />
+        <entry key="app/src/main/res/layout/home_screen.xml" value="0.2187347412109375" />
         <entry key="app/src/main/res/layout/info_item_screen.xml" value="0.2787193973634652" />
         <entry key="app/src/main/res/layout/intro1_screen.xml" value="0.22972869873046878" />
         <entry key="app/src/main/res/layout/intro_screen_item.xml" value="0.20232696533203126" />
