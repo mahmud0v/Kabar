@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.kabar.R
 import com.example.kabar.adapter.PagerAdapter
+import com.example.kabar.adapter.RecyclerAdapter
 import com.example.kabar.databinding.LatestNewsBinding
 import com.example.kabar.utils.SelectableTopicsData
 import com.google.android.material.tabs.TabLayoutMediator
@@ -16,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class LatestNewsScreen : Fragment(R.layout.latest_news) {
     private val binding: LatestNewsBinding by viewBinding()
     private var pagerAdapter: PagerAdapter? = null
+    private var adapter: RecyclerAdapter? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,6 +29,7 @@ class LatestNewsScreen : Fragment(R.layout.latest_news) {
 
     private fun initPagerAdapter() {
         pagerAdapter = PagerAdapter(this)
+        adapter = RecyclerAdapter()
         binding.viewPager2.adapter = pagerAdapter
     }
 
@@ -43,4 +46,6 @@ class LatestNewsScreen : Fragment(R.layout.latest_news) {
             findNavController().navigateUp()
         }
     }
+
+
 }

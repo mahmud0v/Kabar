@@ -1,17 +1,14 @@
 package com.example.kabar.repository
 
 import com.example.kabar.model.NewsResponse
-import com.example.kabar.remote.RemoteDataSource
+import com.example.kabar.remote.NetworkRemoteDataSource
 import com.example.kabar.utils.KabarResult
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class NewsRepository @Inject constructor(
-    private val remoteDataSource: RemoteDataSource
+class NetworkNewsRepository @Inject constructor(
+    private val remoteDataSource: NetworkRemoteDataSource
 ) {
 
 

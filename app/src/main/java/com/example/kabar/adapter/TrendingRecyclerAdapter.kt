@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.kabar.R
 import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
+import com.example.kabar.utils.TimeFormat.getTimeFormat
 import kotlinx.coroutines.newSingleThreadContext
 import org.ocpsoft.prettytime.PrettyTime
 import java.text.ParseException
@@ -58,7 +59,7 @@ class TrendingRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
             headText.text = holder.itemView.context.getString(R.string.fake_desc)
         }
         source.text = data.source.name
-        hour.text = timeFormat(data.publishedAt)
+        hour.text = getTimeFormat(data.publishedAt)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(data)
         }
@@ -74,25 +75,5 @@ class TrendingRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
     }
 
-    private fun timeFormat(publishedAt: String?): String {
-        if (publishedAt != null) {
-            val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss\'Z\'")
-            simpleDateFormat.timeZone = TimeZone.getTimeZone("GMT+5")
-            var time = 0L
-            try {
-                time = simpleDateFormat.parse(publishedAt).time
-                val now = System.currentTimeMillis()
-                val ago = DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS)
-            } catch (parseException: ParseException) {
-                parseException.printStackTrace()
-            }
-
-            val prettyTime = PrettyTime(Locale.getDefault())
-            return prettyTime.format(Date(time))
-        } else {
-            return "15 hour ago"
-        }
-
-    }
 
 }

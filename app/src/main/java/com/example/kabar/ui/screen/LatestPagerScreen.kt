@@ -45,14 +45,22 @@ class LatestPagerScreen : Fragment(R.layout.latest_news_recycler) {
     }
 
     private fun clickEvent() {
+        val screen = requireArguments().getString("screen")
         adapter!!.onItemClick = { data ->
             val bundle = Bundle().apply {
-               putParcelable("key",data)
+                putParcelable("data", data)
             }
 
-            findNavController().navigate(R.id.action_homeScreen_to_infoItemScreen,bundle)
+            if (screen == "home") {
+                findNavController().navigate(R.id.action_homeScreen_to_infoItemScreen, bundle)
+            } else {
+                findNavController().navigate(R.id.action_latestNewsScreen_to_infoItemScreen, bundle)
+            }
+
 
         }
+
+
     }
 
     private val observer = Observer<KabarResult<NewsResponse>> {

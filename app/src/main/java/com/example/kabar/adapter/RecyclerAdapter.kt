@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.example.kabar.R
 import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
+import com.example.kabar.utils.TimeFormat.getTimeFormat
 import org.ocpsoft.prettytime.PrettyTime
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -60,44 +61,18 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val source: TextView = holder.itemView.findViewById(R.id.def_news_source)
         source.text = data.source.name
         val hour: TextView = holder.itemView.findViewById(R.id.hour_text)
-        hour.text = timeFormat(data.publishedAt)
+        hour.text = getTimeFormat(data.publishedAt)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(data)
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun timeFormat(publishedAt: String?): String {
-        if (publishedAt != null) {
-            val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss\'Z\'")
-            simpleDateFormat.timeZone = TimeZone.getTimeZone("GMT+5")
-            var time = 0L
-            try {
-                time = simpleDateFormat.parse(publishedAt).time
-                val now = System.currentTimeMillis()
-                val ago = DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS)
-            } catch (parseException: ParseException) {
-                parseException.printStackTrace()
-            }
-
-            val prettyTime = PrettyTime(Locale.getDefault())
-            return prettyTime.format(Date(time))
-        } else {
-            return "1 week ago"
-        }
-
-    }
 
     override fun getItemCount() = differ.currentList.size
 
 
     inner class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        init {
 
-            fun bind() {
-
-            }
-        }
     }
 
 

@@ -5,17 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kabar.model.NewsResponse
-import com.example.kabar.repository.NewsRepository
+import com.example.kabar.repository.NetworkNewsRepository
 import com.example.kabar.utils.KabarResult
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(
-    private val repository: NewsRepository
+    private val repository: NetworkNewsRepository
 ) : ViewModel() {
 
     private val trendNewsMutableLiveData = MutableLiveData<KabarResult<NewsResponse>>()

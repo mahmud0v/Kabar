@@ -77,7 +77,7 @@ class TrendingNewsScreen : Fragment(R.layout.trending_news) {
     private fun clickEvent() {
         adapter?.onItemClick = { data ->
             val bundle = Bundle().apply {
-                putParcelable("key", data)
+                putParcelable("data", data)
             }
             findNavController().navigate(R.id.action_trendingNews_to_infoItemScreen,bundle)
         }

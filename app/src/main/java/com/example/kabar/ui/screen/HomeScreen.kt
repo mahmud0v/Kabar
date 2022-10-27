@@ -1,5 +1,7 @@
 package com.example.kabar.ui.screen
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.text.format.DateUtils
 import android.view.View
@@ -20,7 +22,10 @@ import com.example.kabar.model.NewsResponse
 import com.example.kabar.ui.viewmodel.NewsViewModel
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
+import com.example.kabar.utils.TimeFormat
+import com.example.kabar.utils.TimeFormat.getTimeFormat
 import com.github.ybq.android.spinkit.style.DoubleBounce
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import org.ocpsoft.prettytime.PrettyTime
@@ -37,12 +42,14 @@ class HomeScreen : Fragment(R.layout.home_screen) {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initPagerAdapter()
-        syncPagerTab()
-        transitionLatestNews()
-        transitionTrendingNews()
-        trendingNews()
-        clickTrendNews()
+
+            initPagerAdapter()
+            syncPagerTab()
+            transitionLatestNews()
+            transitionTrendingNews()
+            trendingNews()
+            clickTrendNews()
+
     }
 
 
@@ -93,7 +100,7 @@ class HomeScreen : Fragment(R.layout.home_screen) {
             .into(binding.trendingInclude.trendImg)
         binding.trendingInclude.trendHeadTxt.text = trendNews!!.description
         binding.trendingInclude.trendNewsSource.text = trendNews!!.source.name
-        binding.trendingInclude.trendHour.text = timeFormat(trendNews!!.publishedAt)
+        binding.trendingInclude.trendHour.text = getTimeFormat(trendNews!!.publishedAt)
         return trendNews!!
     }
 
@@ -113,7 +120,7 @@ class HomeScreen : Fragment(R.layout.home_screen) {
     private fun clickTrendNews() {
         binding.trendingInclude.trendingLayout.setOnClickListener {
             val bundle = Bundle().apply {
-                putParcelable("key", trendNews)
+                putParcelable("data", trendNews)
             }
 
             findNavController().navigate(R.id.action_homeScreen_to_infoItemScreen, bundle)
@@ -121,26 +128,8 @@ class HomeScreen : Fragment(R.layout.home_screen) {
     }
 
 
-    private fun timeFormat(publishedAt: String?): String {
-        if (publishedAt != null) {
-            val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd\'T\'HH:mm:ss\'Z\'")
-            simpleDateFormat.timeZone = TimeZone.getTimeZone("GMT+5")
-            var time = 0L
-            try {
-                time = simpleDateFormat.parse(publishedAt).time
-                val now = System.currentTimeMillis()
-                val ago = DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS)
-            } catch (parseException: ParseException) {
-                parseException.printStackTrace()
-            }
 
-            val prettyTime = PrettyTime(Locale.getDefault())
-            return prettyTime.format(Date(time))
-        } else {
-            return "1 week ago"
-        }
 
-    }
 
 
 }

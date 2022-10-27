@@ -67,7 +67,12 @@
         tools:layout="@layout/latest_news"
         android:id="@+id/latestNewsScreen"
         android:name="com.example.kabar.ui.screen.LatestNewsScreen"
-        android:label="LatestNewsScreen" />
+        android:label="LatestNewsScreen" >
+
+        <action
+            android:id="@+id/action_latestNewsScreen_to_infoItemScreen"
+            app:destination="@id/infoItemScreen" />
+    </fragment>
     <fragment
         android:id="@+id/trendingNews"
         tools:layout="@layout/trending_news"

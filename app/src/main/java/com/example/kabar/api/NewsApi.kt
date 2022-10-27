@@ -14,7 +14,7 @@ interface NewsApi {
     suspend fun getTrendNews(
         @Query("country") country: String = "us",
         @Query("category") category: String,
-        @Query("apiKey") apiKey: String = API_KEY2
+        @Query("apiKey") apiKey: String = API_KEY1
     ): Response<NewsResponse>
 
 
@@ -23,7 +23,7 @@ interface NewsApi {
         @Query("q") q: String,
         @Query("sortBy")sortBy:String = "popularity",
         @Query("language")language:String = "en",
-        @Query("apiKey") apiKey: String= API_KEY2
+        @Query("apiKey") apiKey: String= API_KEY1
     ):Response<NewsResponse>
 
 
