@@ -21,10 +21,17 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="previous">Previous</string>
-
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="explore">Explore</string>
     <string name="topic">Topic</string>
+    <string name="health">Health</string>
+    <string name="health_def">Get energizing workout moves, healthy recipes...</string>
+    <string name="tech_def">The latest tech news about the world\'s best hardware...</string>
+    <string name="art_def">The Art Newspaper is the journal of record for...</string>
+    <string name="politics_def">Opinion and analysis of American and global politi...</string>
+    <string name="money_def">The latest breaking financial news on the US and world...</string>
+    <string name="save">Save</string>
+    <string name="popular_topic">Popular topic</string>
 
 </resources>
