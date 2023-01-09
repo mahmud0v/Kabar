@@ -1,25 +1,22 @@
 package com.example.kabar.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.kabar.model.Articles
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NewsDao {
 
     @Query("SELECT *FROM Kabar")
-    suspend fun getAllNews() : Flow<List<Articles>>
+    suspend fun getAllNews(): List<Articles>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNews(articles: Articles)
 
-    @Delete
-    suspend fun deleteNews(articles: Articles)
+    @Query("Delete from Kabar where id=:id")
+    suspend fun deleteNews(id: Int)
 
     @Update
     suspend fun updateNews(articles: Articles)
-
 
 
 }

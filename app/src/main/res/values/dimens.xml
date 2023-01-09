@@ -10,4 +10,5 @@
     <dimen name="margin_99dp">99dp</dimen>
     <dimen name="text_16sp">16sp</dimen>
     <dimen name="margin_82dp">82dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

@@ -2,7 +2,9 @@ package com.example.kabar.ui.screen
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -14,6 +16,7 @@ import com.example.kabar.databinding.LatestNewsRecyclerBinding
 import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
 import com.example.kabar.ui.viewmodel.HomeViewModel
+import com.example.kabar.ui.viewmodel.ItemViewModel
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
 import com.google.android.material.snackbar.Snackbar
@@ -24,7 +27,7 @@ class LatestPagerScreen : Fragment(R.layout.latest_news_recycler) {
     private val binding: LatestNewsRecyclerBinding by viewBinding()
     private var adapter: RecyclerAdapter? = null
     private val viewModel: HomeViewModel by viewModels()
-
+    private val itemViewModel: ItemViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initRecycler()
@@ -52,6 +55,7 @@ class LatestPagerScreen : Fragment(R.layout.latest_news_recycler) {
 
             if (screen == "home") {
                 findNavController().navigate(R.id.action_homeScreen_to_infoItemScreen, bundle)
+                itemViewModel.itemClick()
             } else {
                 findNavController().navigate(R.id.action_latestNewsScreen_to_infoItemScreen, bundle)
             }

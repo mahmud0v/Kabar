@@ -12,7 +12,7 @@ class DataBaseRemoteDataSource @Inject constructor(
 
     suspend fun insertNews(articles: Articles) = newsDao.insertNews(articles)
 
-    suspend fun deleteNews(articles: Articles) = newsDao.deleteNews(articles)
+    suspend fun deleteNews(id:Int) = newsDao.deleteNews(id)
 
     suspend fun updateNews(articles: Articles) = newsDao.updateNews(articles)
 

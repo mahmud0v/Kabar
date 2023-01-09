@@ -5,21 +5,28 @@ import android.text.format.DateUtils
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.example.kabar.R
 import com.example.kabar.databinding.InfoItemScreenBinding
 import com.example.kabar.model.Articles
+import com.example.kabar.ui.viewmodel.HomeViewModel
+import com.example.kabar.ui.viewmodel.ItemViewModel
 import com.example.kabar.utils.TimeFormat.getTimeFormat
+import dagger.hilt.android.AndroidEntryPoint
 import org.ocpsoft.prettytime.PrettyTime
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class InfoItemScreen : Fragment(R.layout.info_item_screen) {
     private val binding: InfoItemScreenBinding by viewBinding()
-    private var data:Articles? = null
+    private val viewModel: HomeViewModel by viewModels()
+    private var data: Articles? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadData()
@@ -47,52 +54,61 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
         }
     }
 
-    private fun trimContent(content: String?):String{
+    private fun trimContent(content: String?): String {
         var trimContent = content
-        return content?.substring(0,content.length - 14) ?: requireContext().getString(R.string.fake_content)
+        return content?.substring(0, content.length - 14)
+            ?: requireContext().getString(R.string.fake_content)
 
     }
 
 
-    private fun clickLike(){
+    private fun clickLike() {
         binding.likeIc.setOnClickListener {
-            if (!data!!.isLike){
+            if (!data!!.isLike) {
                 binding.likeIc.setImageResource(R.drawable.ic_like_active)
                 data!!.isLike = true
-            }
-            else{
+            } else {
                 binding.likeIc.setImageResource(R.drawable.ic_like_inactive)
                 data!!.isLike = false
             }
 
-            Toast.makeText(requireContext(),"${data!!.isLike}",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "${data!!.isLike}", Toast.LENGTH_SHORT).show()
         }
 
     }
 
 
-    private fun clickBookmark(){
+    private fun clickBookmark() {
+        viewModel.getNewsFromDatabase()
+//        observeNewsFromDB()
+        Toast.makeText(requireContext(), "${data!!.isBookmarked}", Toast.LENGTH_SHORT).show()
         binding.bookmarked.setOnClickListener {
-            if (!data!!.isBookmarked){
+            if (!data!!.isBookmarked) {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_active)
                 data!!.isBookmarked = true
-            }
-            else{
+                viewModel.insertNews(data!!)
+
+            } else {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_inactive)
+                viewModel.deleteNews(data!!.id)
                 data!!.isBookmarked = false
+
             }
 
-            Toast.makeText(requireContext(),"${data!!.isBookmarked}",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(),"${data!!.isBookmarked}",Toast.LENGTH_SHORT).show()
 
         }
     }
 
 
+//    private fun observeNewsFromDB() {
+//        viewModel.newsDatabaseLiveData.observe(viewLifecycleOwner, observer)
+//    }
 
 
-
-
-
+    private val observer = Observer<List<Articles>> {
+        Toast.makeText(requireContext(), "${it.size}", Toast.LENGTH_SHORT).show()
+    }
 
 
 }

@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Source(
-  val id:String?,
+  val id:String? = null,
   val name:String
 ):Parcelable

@@ -30,6 +30,7 @@ class TrendingNewsScreen : Fragment(R.layout.trending_news) {
         initialRecycler()
         returnBack()
         clickEvent()
+
     }
 
 

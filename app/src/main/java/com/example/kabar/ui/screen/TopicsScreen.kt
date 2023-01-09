@@ -1,11 +1,13 @@
 package com.example.kabar.ui.screen
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.kabar.MainActivity
 import com.example.kabar.R
 import com.example.kabar.adapter.FlexboxAdapter
 import com.example.kabar.databinding.SelectTopicsScreenBinding
@@ -54,7 +56,8 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
         binding.topicsNextBtn.setOnClickListener {
             condition = true
             saveCondition()
-            findNavController().navigate(R.id.action_topicsScreen_to_homeScreen)
+            startActivity(Intent(requireContext(),MainActivity::class.java))
+            requireActivity().finish()
         }
     }
 

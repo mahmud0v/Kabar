@@ -11,8 +11,8 @@ class Converts {
     }
 
     @TypeConverter
-    fun fromSource(id:String,name:String) : Source{
-        return Source(id,name)
+    fun fromSource(name:String) : Source{
+        return Source(name = name)
     }
 
 

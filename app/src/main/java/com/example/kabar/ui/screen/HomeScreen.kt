@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.example.kabar.R
@@ -15,6 +18,7 @@ import com.example.kabar.databinding.HomeScreenBinding
 import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
 import com.example.kabar.ui.viewmodel.HomeViewModel
+import com.example.kabar.ui.viewmodel.ItemViewModel
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
 import com.example.kabar.utils.TimeFormat.getTimeFormat
@@ -26,18 +30,18 @@ class HomeScreen : Fragment(R.layout.home_screen) {
     private val binding: HomeScreenBinding by viewBinding()
     private var pagerAdapter: PagerAdapter? = null
     private val viewModel: HomeViewModel by viewModels()
+    private val itemViewModel: ItemViewModel by activityViewModels()
     private var trendNews: Articles? = null
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-            initPagerAdapter()
-            syncPagerTab()
-            transitionLatestNews()
-            transitionTrendingNews()
-            trendingNews()
-            clickTrendNews()
-
+        initPagerAdapter()
+        syncPagerTab()
+        transitionLatestNews()
+        transitionTrendingNews()
+        trendingNews()
+        clickTrendNews()
+        launchHome()
     }
 
 
@@ -54,6 +58,7 @@ class HomeScreen : Fragment(R.layout.home_screen) {
             tab.text = data[position]
         }.attach()
     }
+
 
     private fun trendingNews() {
         viewModel.getTrendNews("technology")
@@ -95,13 +100,20 @@ class HomeScreen : Fragment(R.layout.home_screen) {
     private fun transitionLatestNews() {
         binding.latestSeeAll.setOnClickListener {
             findNavController().navigate(R.id.action_homeScreen_to_latestNewsScreen)
+            itemViewModel.itemClick()
         }
     }
 
     private fun transitionTrendingNews() {
         binding.trendingSeeAll.setOnClickListener {
             findNavController().navigate(R.id.action_homeScreen_to_trendingNews)
+            itemViewModel.itemClick()
         }
+    }
+
+
+    private fun launchHome() {
+        itemViewModel.returnClicked()
     }
 
 
@@ -112,12 +124,9 @@ class HomeScreen : Fragment(R.layout.home_screen) {
             }
 
             findNavController().navigate(R.id.action_homeScreen_to_infoItemScreen, bundle)
+            itemViewModel.itemClick()
         }
     }
-
-
-
-
 
 
 }

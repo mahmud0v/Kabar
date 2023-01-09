@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph1"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        tools:layout="@layout/splash_screen"
+        android:name="com.example.kabar.ui.screen.SplashScreen"
+        android:label="SplashScreen" >
+        <action
+            android:id="@+id/action_splashScreen_to_homeViewPager"
+            app:destination="@id/homeViewPager"
+            app:popUpTo="@id/nav_graph1"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreen_to_topicsScreen"
+            app:destination="@id/topicsScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeViewPager"
+        tools:layout="@layout/intro1_screen"
+        android:name="com.example.kabar.ui.viewpager.HomeViewPager"
+        android:label="HomeViewPager" >
+        <action
+            android:id="@+id/action_homeViewPager_to_topicsScreen"
+            app:destination="@id/topicsScreen"
+            app:popUpTo="@id/nav_graph1"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicsScreen"
+        tools:layout="@layout/select_topics_screen"
+        android:name="com.example.kabar.ui.screen.TopicsScreen"
+        android:label="TopicsScreen" />
+</navigation>

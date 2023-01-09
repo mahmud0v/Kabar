@@ -17,7 +17,7 @@ class DatabaseNewsRepository @Inject constructor(
 
     suspend fun updateNews(articles: Articles) = dataBaseRemoteDataSource.updateNews(articles)
 
-    suspend fun deleteNews(articles: Articles) = dataBaseRemoteDataSource.deleteNews(articles)
+    suspend fun deleteNews(id:Int) = dataBaseRemoteDataSource.deleteNews(id)
 
 
 }

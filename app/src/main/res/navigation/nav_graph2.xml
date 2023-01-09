@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeScreen">
+
+
+
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="com.example.kabar.ui.screen.HomeScreen"
+        android:label="HomeScreen"
+        tools:layout="@layout/home_screen">
+        <action
+            android:id="@+id/action_homeScreen_to_latestNewsScreen"
+            app:destination="@id/latestNewsScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_trendingNews"
+            app:destination="@id/trendingNews" />
+        <action
+            android:id="@+id/action_homeScreen_to_infoItemScreen"
+            app:destination="@id/infoItemScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_exploreScreen"
+            app:destination="@id/exploreScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_bookmarkScreen"
+            app:destination="@id/bookmarkScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_profileScreen"
+            app:destination="@id/profileScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/latestNewsScreen"
+        android:name="com.example.kabar.ui.screen.LatestNewsScreen"
+        android:label="LatestNewsScreen"
+        tools:layout="@layout/latest_news">
+
+        <action
+            android:id="@+id/action_latestNewsScreen_to_infoItemScreen"
+            app:destination="@id/infoItemScreen" />
+        <action
+            android:id="@+id/action_latestNewsScreen_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/trendingNews"
+        android:name="com.example.kabar.ui.screen.TrendingNewsScreen"
+        android:label="TrendingNews"
+        tools:layout="@layout/trending_news">
+        <action
+            android:id="@+id/action_trendingNews_to_infoItemScreen"
+            app:destination="@id/infoItemScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoItemScreen"
+        android:name="com.example.kabar.ui.screen.InfoItemScreen"
+        android:label="InfoItemScreen"
+        tools:layout="@layout/info_item_screen" />
+    <fragment
+        android:id="@+id/bookmarkScreen"
+        android:name="com.example.kabar.ui.screen.BookmarkScreen"
+        android:label="BookmarkScreen"
+        tools:layout="@layout/bookmark_screen" />
+    <fragment
+        android:id="@+id/exploreScreen"
+        android:name="com.example.kabar.ui.screen.ExploreScreen"
+        android:label="ExploreScreen"
+        tools:layout="@layout/explore_screen" >
+        <action
+            android:id="@+id/action_exploreScreen_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileScreen"
+        android:name="com.example.kabar.ui.screen.ProfileScreen"
+        android:label="ProfileScreen"
+        tools:layout="@layout/profile_screen" >
+        <action
+            android:id="@+id/action_profileScreen_to_homeScreen"
+            app:destination="@id/homeScreen" />
+    </fragment>
+
+</navigation>
