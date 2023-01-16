@@ -49,7 +49,6 @@ class ExploreScreen : Fragment(R.layout.explore_screen) {
         newTopicList = listOf<ExploreTopic>()
         viewModel.topicsLiveData.observe(viewLifecycleOwner, Observer {
             newTopicList = loadList(it)
-            Toast.makeText(requireContext(), "${newTopicList.size}", Toast.LENGTH_SHORT).show()
             exploreAdapter!!.differ.submitList(randomList(newTopicList))
             binding.expTopicRv.adapter = exploreAdapter
             binding.expTopicRv.layoutManager = LinearLayoutManager(requireContext())
@@ -59,18 +58,18 @@ class ExploreScreen : Fragment(R.layout.explore_screen) {
 
     }
 
-    private fun loadTrend(){
+    private fun loadTrend() {
         loadTrendNews()
         clickTrendItem()
     }
 
 
-    private fun clickTrendItem(){
+    private fun clickTrendItem() {
         trendNewsAdapter?.onItemClick = { article ->
-           val bundle = Bundle().apply {
-               putParcelable("data",article)
-           }
-            findNavController().navigate(R.id.action_exploreScreen_to_infoItemScreen,bundle)
+            val bundle = Bundle().apply {
+                putParcelable("data", article)
+            }
+            findNavController().navigate(R.id.action_exploreScreen_to_infoItemScreen, bundle)
             itemViewModel.itemClick()
         }
     }
@@ -135,9 +134,8 @@ class ExploreScreen : Fragment(R.layout.explore_screen) {
 
     private fun loadTrendNews() {
         trendNewsAdapter = TrendingRecyclerAdapter()
-        Toast.makeText(requireContext(), "${newTopicList?.size}", Toast.LENGTH_SHORT).show()
-        val exploreTopic = newTopicList.random()
-        viewModel.trendsNews(requireContext().getString(exploreTopic.category))
+        val category = requireContext().getString(randomTopic(newTopicList).category)
+        viewModel.trendsNews(category)
         viewModel.trendNewsLiveData.observe(viewLifecycleOwner, observer)
         binding.popularTopicRv.adapter = trendNewsAdapter
         binding.popularTopicRv.layoutManager = LinearLayoutManager(requireContext())
@@ -155,6 +153,16 @@ class ExploreScreen : Fragment(R.layout.explore_screen) {
             ).show()
         }
     }
+
+    private fun randomTopic(list: List<ExploreTopic>): ExploreTopic {
+        for (i in list.indices) {
+            if (list[i].click) {
+                return list[i]
+            }
+        }
+        return list.random()
+    }
+
 
     private fun initTrendAdapter(newsResponse: NewsResponse) {
         hideLoader()
