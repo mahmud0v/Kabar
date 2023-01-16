@@ -41,7 +41,7 @@ class HomeScreen : Fragment(R.layout.home_screen) {
         transitionTrendingNews()
         trendingNews()
         clickTrendNews()
-        launchHome()
+        backHome()
     }
 
 
@@ -112,7 +112,7 @@ class HomeScreen : Fragment(R.layout.home_screen) {
     }
 
 
-    private fun launchHome() {
+    private fun backHome() {
         itemViewModel.returnClicked()
     }
 

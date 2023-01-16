@@ -5,11 +5,12 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.example.kabar.model.Articles
+import com.example.kabar.model.ExploreTopicEntity
 import com.example.kabar.utils.Converts
 
 
 @Database(
-    entities = [Articles::class],
+    entities = [Articles::class,ExploreTopicEntity::class],
     version = 1
 )
 @TypeConverters(Converts::class)
@@ -17,5 +18,6 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun getNewsDao() : NewsDao
 
+    abstract fun getExploreDao(): ExploreDao
 
 }

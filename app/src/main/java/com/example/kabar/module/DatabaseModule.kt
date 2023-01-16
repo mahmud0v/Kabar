@@ -28,4 +28,9 @@ object DatabaseModule {
     fun provideNewsDao(db:AppDatabase) = db.getNewsDao()
 
 
+    @Singleton
+    @Provides
+    fun provideExploreDao(db:AppDatabase) = db.getExploreDao()
+
+
 }

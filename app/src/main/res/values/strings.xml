@@ -26,12 +26,31 @@
     <string name="explore">Explore</string>
     <string name="topic">Topic</string>
     <string name="health">Health</string>
+    <string name="technology">Technology</string>
+    <string name="art">Art</string>
+    <string name="politics">Politics</string>
+    <string name="sport">Sport</string>
+    <string name="travel">Travel</string>
+    <string name="money">Money</string>
     <string name="health_def">Get energizing workout moves, healthy recipes...</string>
     <string name="tech_def">The latest tech news about the world\'s best hardware...</string>
     <string name="art_def">The Art Newspaper is the journal of record for...</string>
     <string name="politics_def">Opinion and analysis of American and global politi...</string>
     <string name="money_def">The latest breaking financial news on the US and world...</string>
+    <string name="sport_def">Sports news and live sports coverage including scores..</string>
+    <string name="travel_def">The latest travel news on the most significant developm...</string>
     <string name="save">Save</string>
+    <string name="saved">Saved</string>
     <string name="popular_topic">Popular topic</string>
+    <string name="topics">Topics</string>
+    <string name="business_topic">business</string>
+    <string name="general_topic">general</string>
+    <string name="health_topic">health</string>
+    <string name="science_topic">science</string>
+    <string name="sports_topic">sports</string>
+    <string name="technology_topic">technology</string>
+    <string name="entertainment_topic">entertainment</string>
+
 
 </resources>
+

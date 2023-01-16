@@ -71,6 +71,12 @@
         <action
             android:id="@+id/action_exploreScreen_to_homeScreen"
             app:destination="@id/homeScreen" />
+        <action
+            android:id="@+id/action_exploreScreen_to_allTopicsScreen"
+            app:destination="@id/allTopicsScreen" />
+        <action
+            android:id="@+id/action_exploreScreen_to_infoItemScreen"
+            app:destination="@id/infoItemScreen" />
     </fragment>
     <fragment
         android:id="@+id/profileScreen"
@@ -80,6 +86,13 @@
         <action
             android:id="@+id/action_profileScreen_to_homeScreen"
             app:destination="@id/homeScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/allTopicsScreen"
+        tools:layout="@layout/all_explore_screen"
+        android:name="com.example.kabar.ui.screen.AllTopicsScreen"
+        android:label="AllTopicsScreen" >
+
     </fragment>
 
 </navigation>

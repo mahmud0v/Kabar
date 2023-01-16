@@ -22,7 +22,6 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true"
-            android:label="@string/title_activity_splash"
             android:theme="@style/Theme.Kabar.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

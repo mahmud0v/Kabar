@@ -17,7 +17,7 @@
         tools:src="@drawable/health" />
 
     <TextView
-        android:id="@+id/health_txt"
+        android:id="@+id/title_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,12 +31,14 @@
         />
 
     <TextView
-        android:layout_width="207dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/health_def"
         android:textSize="14sp"
-        app:layout_constraintLeft_toLeftOf="@id/health_txt"
-        app:layout_constraintTop_toBottomOf="@id/health_txt"
+        android:id="@+id/desc_txt"
+        android:maxLines="2"
+        app:layout_constraintLeft_toLeftOf="@id/title_txt"
+        app:layout_constraintTop_toBottomOf="@id/title_txt"
         android:textColor="@color/intro1_desc_color"
         android:fontFamily="@font/poppins_regular"
         />
@@ -44,6 +46,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="78dp"
         android:layout_height="34dp"
+        android:id="@+id/btn_id"
         app:layout_constraintTop_toTopOf="@id/exp_top_img_id"
         app:layout_constraintBottom_toBottomOf="@id/exp_top_img_id"
         app:layout_constraintEnd_toEndOf="parent"
