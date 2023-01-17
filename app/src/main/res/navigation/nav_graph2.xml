@@ -21,15 +21,7 @@
         <action
             android:id="@+id/action_homeScreen_to_infoItemScreen"
             app:destination="@id/infoItemScreen" />
-        <action
-            android:id="@+id/action_homeScreen_to_exploreScreen"
-            app:destination="@id/exploreScreen" />
-        <action
-            android:id="@+id/action_homeScreen_to_bookmarkScreen"
-            app:destination="@id/bookmarkScreen" />
-        <action
-            android:id="@+id/action_homeScreen_to_profileScreen"
-            app:destination="@id/profileScreen" />
+
     </fragment>
     <fragment
         android:id="@+id/latestNewsScreen"
@@ -68,9 +60,9 @@
         android:name="com.example.kabar.ui.screen.ExploreScreen"
         android:label="ExploreScreen"
         tools:layout="@layout/explore_screen" >
-        <action
-            android:id="@+id/action_exploreScreen_to_homeScreen"
-            app:destination="@id/homeScreen" />
+<!--        <action-->
+<!--            android:id="@+id/action_exploreScreen_to_homeScreen"-->
+<!--            app:destination="@id/homeScreen" />-->
         <action
             android:id="@+id/action_exploreScreen_to_allTopicsScreen"
             app:destination="@id/allTopicsScreen" />
@@ -83,16 +75,15 @@
         android:name="com.example.kabar.ui.screen.ProfileScreen"
         android:label="ProfileScreen"
         tools:layout="@layout/profile_screen" >
-        <action
-            android:id="@+id/action_profileScreen_to_homeScreen"
-            app:destination="@id/homeScreen" />
+<!--        <action-->
+<!--            android:id="@+id/action_profileScreen_to_homeScreen"-->
+<!--            app:destination="@id/homeScreen" />-->
     </fragment>
     <fragment
         android:id="@+id/allTopicsScreen"
         tools:layout="@layout/all_explore_screen"
         android:name="com.example.kabar.ui.screen.AllTopicsScreen"
         android:label="AllTopicsScreen" >
-
     </fragment>
 
 </navigation>

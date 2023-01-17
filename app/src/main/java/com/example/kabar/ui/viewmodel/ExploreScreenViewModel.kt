@@ -29,6 +29,10 @@ class ExploreScreenViewModel @Inject constructor(
     val trendNewsLiveData: LiveData<KabarResult<NewsResponse>> = trendNewsMutableLiveData
 
 
+    init {
+        getAllTopic()
+    }
+
     fun getAllTopic() = viewModelScope.launch {
         topicsMutableLiveData.value = exploreTopicRepository.getAllTopics()
     }
