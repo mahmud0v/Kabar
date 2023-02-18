@@ -54,7 +54,11 @@
         android:id="@+id/bookmarkScreen"
         android:name="com.example.kabar.ui.screen.BookmarkScreen"
         android:label="BookmarkScreen"
-        tools:layout="@layout/bookmark_screen" />
+        tools:layout="@layout/bookmark_screen" >
+        <action
+            android:id="@+id/action_bookmarkScreen_to_infoItemScreen"
+            app:destination="@id/infoItemScreen" />
+    </fragment>
     <fragment
         android:id="@+id/exploreScreen"
         android:name="com.example.kabar.ui.screen.ExploreScreen"

@@ -18,6 +18,6 @@ data class Articles(
    val urlToImage:String?,
    val publishedAt:String?,
    val content:String?,
-   var isLike:Boolean,
-   var isBookmarked:Boolean
+   var isLike:Boolean = false,
+   var isBookmarked:Boolean = false
 ) : Parcelable

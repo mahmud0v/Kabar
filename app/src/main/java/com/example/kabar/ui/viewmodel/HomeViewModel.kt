@@ -1,9 +1,6 @@
 package com.example.kabar.ui.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
 import com.example.kabar.repository.DatabaseNewsRepository
@@ -16,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val networkRepository: NetworkNewsRepository,
-    private val databaseRepository: DatabaseNewsRepository
+    private val databaseRepository: DatabaseNewsRepository,
 ) : ViewModel() {
 
     private val trendNewsMutableLiveData = MutableLiveData<KabarResult<NewsResponse>>()
@@ -27,6 +24,8 @@ class HomeViewModel @Inject constructor(
 
     private val newsDatabaseMutableLiveData = MutableLiveData<List<Articles>>()
     val newsDatabaseLiveData: LiveData<List<Articles>> = newsDatabaseMutableLiveData
+
+
 
     fun getTrendNews(category: String) = viewModelScope.launch {
         trendNewsMutableLiveData.value = KabarResult.Loading()
@@ -54,5 +53,11 @@ class HomeViewModel @Inject constructor(
     fun deleteNews(id:Int) = viewModelScope.launch {
         databaseRepository.deleteNews(id)
     }
+
+    fun updateNews(articles: Articles) = viewModelScope.launch {
+        databaseRepository.updateNews(articles)
+    }
+
+
 
 }

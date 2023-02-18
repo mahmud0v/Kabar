@@ -1,8 +1,10 @@
 package com.example.kabar.ui.screen
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -21,6 +23,8 @@ import com.example.kabar.ui.viewmodel.ExploreScreenViewModel
 import com.example.kabar.ui.viewmodel.ItemViewModel
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
+import com.example.kabar.utils.checkOnline
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,14 +36,24 @@ class ExploreScreen : Fragment(R.layout.explore_screen) {
     private val itemViewModel: ItemViewModel by activityViewModels()
     private lateinit var newTopicList: List<ExploreTopic>
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        loadData()
 
-        initExploreTopic()
-        exploreTopicClick()
-        navigateAllTopics()
-        backExplore()
-        clickTrendItem()
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun loadData() {
+        if (checkOnline(requireContext())) {
+            initExploreTopic()
+            exploreTopicClick()
+            navigateAllTopics()
+            backExplore()
+            clickTrendItem()
+        } else {
+            Snackbar.make(binding.root, "please check your internet", Snackbar.LENGTH_SHORT).show()
+        }
     }
 
 
@@ -188,10 +202,12 @@ class ExploreScreen : Fragment(R.layout.explore_screen) {
 
 
     private fun navigateAllTopics() {
+
         binding.seeAllId.setOnClickListener {
             findNavController().navigate(R.id.action_exploreScreen_to_allTopicsScreen)
             itemViewModel.itemClick()
         }
+
     }
 
     private fun backExplore() {

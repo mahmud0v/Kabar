@@ -68,7 +68,7 @@ class AllTopicsScreen : Fragment(R.layout.all_explore_screen) {
 
 
     private fun loadList(list: List<ExploreTopicEntity>?): List<ExploreTopic> {
-        val oldList = SelectableTopicsData.getExploreTopics().shuffled()
+        val oldList = SelectableTopicsData.getExploreTopics()
         val newList = ArrayList<ExploreTopic>()
         if (list == null || list.isEmpty()) {
             return oldList

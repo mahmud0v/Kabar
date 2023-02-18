@@ -1,8 +1,10 @@
 package com.example.kabar.ui.screen
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -22,6 +24,8 @@ import com.example.kabar.ui.viewmodel.ItemViewModel
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
 import com.example.kabar.utils.TimeFormat.getTimeFormat
+import com.example.kabar.utils.checkOnline
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,17 +37,26 @@ class HomeScreen : Fragment(R.layout.home_screen) {
     private val itemViewModel: ItemViewModel by activityViewModels()
     private var trendNews: Articles? = null
 
-
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initPagerAdapter()
-        syncPagerTab()
-        transitionLatestNews()
-        transitionTrendingNews()
-        trendingNews()
-        clickTrendNews()
-        backHome()
+        loadData()
+
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun loadData() {
+        if (checkOnline(requireContext())) {
+            initPagerAdapter()
+            syncPagerTab()
+            transitionLatestNews()
+            transitionTrendingNews()
+            trendingNews()
+            clickTrendNews()
+            backHome()
+        } else {
+            Snackbar.make(binding.root, "please check your internet", Snackbar.LENGTH_SHORT).show()
+        }
+    }
 
     private fun initPagerAdapter() {
         pagerAdapter = PagerAdapter(this)

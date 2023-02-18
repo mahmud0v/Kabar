@@ -45,6 +45,9 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
             binding.infoDesc.text = data!!.description
             binding.newsContent.text = trimContent(data!!.content)
         }
+
+        checkLike(data!!.isLike)
+        checkBookmark(data!!.isBookmarked)
     }
 
 
@@ -62,6 +65,16 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
     }
 
 
+    private fun checkLike(clicked: Boolean) {
+        if (clicked) {
+            binding.likeIc.setImageResource(R.drawable.ic_like_active)
+        } else {
+            binding.likeIc.setImageResource(R.drawable.ic_like_inactive)
+        }
+
+
+    }
+
     private fun clickLike() {
         binding.likeIc.setOnClickListener {
             if (!data!!.isLike) {
@@ -71,23 +84,17 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
                 binding.likeIc.setImageResource(R.drawable.ic_like_inactive)
                 data!!.isLike = false
             }
-
-//            Toast.makeText(requireContext(), "${data!!.isLike}", Toast.LENGTH_SHORT).show()
+            viewModel.updateNews(data!!)
         }
 
     }
 
-
     private fun clickBookmark() {
-        viewModel.getNewsFromDatabase()
-//        observeNewsFromDB()
-        Toast.makeText(requireContext(), "${data!!.isBookmarked}", Toast.LENGTH_SHORT).show()
         binding.bookmarked.setOnClickListener {
             if (!data!!.isBookmarked) {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_active)
                 data!!.isBookmarked = true
                 viewModel.insertNews(data!!)
-
             } else {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_inactive)
                 viewModel.deleteNews(data!!.id)
@@ -101,9 +108,14 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
     }
 
 
-//    private fun observeNewsFromDB() {
-//        viewModel.newsDatabaseLiveData.observe(viewLifecycleOwner, observer)
-//    }
+    private fun checkBookmark(bookmarked: Boolean) {
+        if (bookmarked) {
+            binding.bookmarked.setImageResource(R.drawable.bookmark_icon_active)
+        } else {
+            binding.bookmarked.setImageResource(R.drawable.bookmark_icon_inactive)
+        }
+
+    }
 
 
     private val observer = Observer<List<Articles>> {

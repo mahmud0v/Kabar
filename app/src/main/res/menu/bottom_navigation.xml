@@ -14,10 +14,10 @@
         android:icon="@drawable/fill_bookmark_icon"
         android:title="Bookmark" />
 
-    <item
-        android:id="@+id/profileScreen"
-        android:icon="@drawable/fill_profile_icon"
-        android:title="Profile"
+<!--    <item-->
+<!--        android:id="@+id/profileScreen"-->
+<!--        android:icon="@drawable/fill_profile_icon"-->
+<!--        android:title="Profile"-->
 
-        />
+<!--        />-->
 </menu>
