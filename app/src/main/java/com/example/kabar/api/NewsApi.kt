@@ -19,7 +19,7 @@ interface NewsApi {
 
 
     @GET("v2/everything")
-    suspend fun getLatestNews(
+    suspend fun getSearchNews(
         @Query("q") q: String,
         @Query("sortBy")sortBy:String = "popularity",
         @Query("language")language:String = "en",

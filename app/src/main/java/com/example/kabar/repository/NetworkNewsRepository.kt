@@ -26,8 +26,8 @@ class NetworkNewsRepository @Inject constructor(
 
     }
 
-    suspend fun getLatestNews(category: String): Flow<KabarResult<NewsResponse>> {
-        val latestNews = remoteDataSource.getLatestNews(category)
+    suspend fun getSearchNews(searchWord: String): Flow<KabarResult<NewsResponse>> {
+        val latestNews = remoteDataSource.getSearchNews(searchWord)
         return if (latestNews.isSuccessful) {
             flow {
                 emit(KabarResult.Success(latestNews.body()!!))

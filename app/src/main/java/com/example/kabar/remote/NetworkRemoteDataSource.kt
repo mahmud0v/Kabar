@@ -9,7 +9,7 @@ class NetworkRemoteDataSource @Inject constructor(private val newsApi: NewsApi) 
 
     suspend fun getTrendNews(category: String) = newsApi.getTrendNews(category = category)
 
-    suspend fun getLatestNews(category: String) = newsApi.getLatestNews(q = category)
+    suspend fun getSearchNews(searchWord: String) = newsApi.getSearchNews(q = searchWord)
 
 
 }

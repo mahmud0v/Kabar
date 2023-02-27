@@ -1,10 +1,12 @@
 package com.example.kabar.ui.screen
 
+import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -48,6 +50,7 @@ class HomeScreen : Fragment(R.layout.home_screen) {
         if (checkOnline(requireContext())) {
             initPagerAdapter()
             syncPagerTab()
+            searchNews()
             transitionLatestNews()
             transitionTrendingNews()
             trendingNews()
@@ -82,32 +85,35 @@ class HomeScreen : Fragment(R.layout.home_screen) {
         when (value) {
             is KabarResult.Loading -> binding.spinKit.visibility = View.VISIBLE
             is KabarResult.Success -> bindingTrendNews(value.data!!.articles)
-            is KabarResult.Error -> Toast.makeText(
-                requireContext(),
-                "${value.message}",
-                Toast.LENGTH_SHORT
-            ).show()
+            is KabarResult.Error ->  Snackbar.make(binding.root,"${value.message}",Snackbar.LENGTH_SHORT).show()
+
         }
     }
 
-    private fun bindingTrendNews(list: List<Articles>): Articles {
+    private fun bindingTrendNews(list: List<Articles>) {
         binding.spinKit.visibility = View.GONE
-        val limit = list.size - 1
-        trendNews = list[0]
-        for (i in 0..limit) {
-            if (list[i].urlToImage != null && list[i].url != null && list[i].description
-                != null && list[i].author != null && list[i].title != null && list[i].publishedAt != null && list[i].content != null
-            ) {
-                trendNews = list[i]
-                break
+        if(list.isNotEmpty()){
+            val limit = list.size - 1
+            trendNews = list[0]
+            for (i in 0..limit) {
+                if (list[i].urlToImage != null && list[i].url != null && list[i].description
+                    != null && list[i].author != null && list[i].title != null && list[i].publishedAt != null && list[i].content != null
+                ) {
+                    trendNews = list[i]
+                    break
+                }
             }
+            Glide.with(binding.trendingInclude.root).load(trendNews!!.urlToImage)
+                .into(binding.trendingInclude.trendImg)
+            binding.trendingInclude.trendHeadTxt.text = trendNews!!.description
+            binding.trendingInclude.trendNewsSource.text = trendNews!!.source.name
+            binding.trendingInclude.trendHour.text = getTimeFormat(trendNews!!.publishedAt)
+
         }
-        Glide.with(binding.trendingInclude.root).load(trendNews!!.urlToImage)
-            .into(binding.trendingInclude.trendImg)
-        binding.trendingInclude.trendHeadTxt.text = trendNews!!.description
-        binding.trendingInclude.trendNewsSource.text = trendNews!!.source.name
-        binding.trendingInclude.trendHour.text = getTimeFormat(trendNews!!.publishedAt)
-        return trendNews!!
+        else{
+            Snackbar.make(binding.root,"there aren't data",Snackbar.LENGTH_SHORT).show()
+        }
+
     }
 
     private fun transitionLatestNews() {
@@ -122,6 +128,21 @@ class HomeScreen : Fragment(R.layout.home_screen) {
             findNavController().navigate(R.id.action_homeScreen_to_trendingNews)
             itemViewModel.itemClick()
         }
+    }
+
+
+    private fun searchNews() {
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?) = true
+
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchWordEverything(newText)
+                return true
+            }
+        })
+
     }
 
 
@@ -142,4 +163,45 @@ class HomeScreen : Fragment(R.layout.home_screen) {
     }
 
 
+    private fun searchWordEverything(searchWord: String?) {
+        spinShow()
+        if (searchWord != null && searchWord.isNotBlank()) {
+            viewModel.getSearchNews(searchWord)
+            viewModel.searchNewsLiveData.observe(viewLifecycleOwner, Observer {
+                showSearchData(it)
+            })
+        }else {
+            spinClose()
+            Snackbar.make(binding.root,"${"Don't enter empty text!"}",Snackbar.LENGTH_SHORT).show()
+        }
+
+
+    }
+
+    private fun showSearchData(data: KabarResult<NewsResponse>) {
+        when (data) {
+            is KabarResult.Success -> bindingTrendNews(data.data!!.articles)
+            is KabarResult.Loading -> spinShow()
+            is KabarResult.Error -> {
+                spinClose()
+                Snackbar.make(binding.root,"${data.message}",Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
+
+
+    private fun spinShow() {
+        binding.spinKit.visibility = View.VISIBLE
+    }
+
+    private fun spinClose() {
+        binding.spinKit.visibility = View.GONE
+
+    }
+
+
 }
+
+

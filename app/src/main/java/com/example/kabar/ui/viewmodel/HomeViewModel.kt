@@ -19,12 +19,11 @@ class HomeViewModel @Inject constructor(
     private val trendNewsMutableLiveData = MutableLiveData<KabarResult<NewsResponse>>()
     val trendNewsLiveData: LiveData<KabarResult<NewsResponse>> = trendNewsMutableLiveData
 
-    private val latestNewsMutableLiveData = MutableLiveData<KabarResult<NewsResponse>>()
-    val latestNewsLiveData = latestNewsMutableLiveData
+    private val searchNewsMutableLiveData = MutableLiveData<KabarResult<NewsResponse>>()
+    val searchNewsLiveData = searchNewsMutableLiveData
 
     private val newsDatabaseMutableLiveData = MutableLiveData<List<Articles>>()
     val newsDatabaseLiveData: LiveData<List<Articles>> = newsDatabaseMutableLiveData
-
 
 
     fun getTrendNews(category: String) = viewModelScope.launch {
@@ -35,9 +34,10 @@ class HomeViewModel @Inject constructor(
 
     }
 
-    fun getLatestNews(category: String) = viewModelScope.launch {
-        networkRepository.getLatestNews(category).collect {
-            latestNewsMutableLiveData.value = it
+    fun getSearchNews(searchWord: String) = viewModelScope.launch {
+        searchNewsMutableLiveData.value = KabarResult.Loading()
+        networkRepository.getSearchNews(searchWord).collect {
+            searchNewsLiveData.value = it
         }
     }
 
