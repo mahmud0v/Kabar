@@ -40,8 +40,8 @@ class LatestPagerScreen : Fragment(R.layout.latest_news_recycler) {
         adapter = RecyclerAdapter()
         val position = requireArguments().getInt("key")
         val topics = SelectableTopicsData.getHeadlineCategories()
-        viewModel.getTrendNews(topics[position])
-        viewModel.trendNewsLiveData.observe(viewLifecycleOwner, observer)
+        viewModel.getSearchNews(topics[position])
+        viewModel.searchNewsLiveData.observe(viewLifecycleOwner, observer)
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
     }

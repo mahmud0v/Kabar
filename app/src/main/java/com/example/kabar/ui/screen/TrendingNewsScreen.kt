@@ -15,6 +15,7 @@ import com.example.kabar.databinding.TrendingNewsBinding
 import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
 import com.example.kabar.ui.viewmodel.HomeViewModel
+import com.example.kabar.utils.Constants.Companion.TREND_NEWS
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +38,8 @@ class TrendingNewsScreen : Fragment(R.layout.trending_news) {
     private fun initialRecycler() {
         adapter = TrendingRecyclerAdapter()
         binding.spinKit2.visibility = View.VISIBLE
-        viewModel.trendNewsLiveData.observe(viewLifecycleOwner, observer)
+        viewModel.getSearchNews(TREND_NEWS)
+        viewModel.searchNewsLiveData.observe(viewLifecycleOwner, observer)
         binding.trendingRecycler.adapter = adapter
         binding.trendingRecycler.layoutManager = LinearLayoutManager(requireContext())
     }

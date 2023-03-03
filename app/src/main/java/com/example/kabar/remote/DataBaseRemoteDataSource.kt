@@ -16,5 +16,7 @@ class DataBaseRemoteDataSource @Inject constructor(
 
     suspend fun updateNews(articles: Articles) = newsDao.updateNews(articles)
 
+    suspend fun checkArticle(title:String) = newsDao.checkArticle(title)
+
 
 }

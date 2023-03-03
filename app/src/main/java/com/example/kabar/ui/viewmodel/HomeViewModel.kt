@@ -26,6 +26,7 @@ class HomeViewModel @Inject constructor(
     val newsDatabaseLiveData: LiveData<List<Articles>> = newsDatabaseMutableLiveData
 
 
+
     fun getTrendNews(category: String) = viewModelScope.launch {
         trendNewsMutableLiveData.value = KabarResult.Loading()
         networkRepository.getTrendNews(category).collect {
@@ -45,6 +46,13 @@ class HomeViewModel @Inject constructor(
         newsDatabaseMutableLiveData.value = databaseRepository.getAllNews()
 
     }
+
+    fun checkArticleDB(title:String) = viewModelScope.launch {
+        databaseRepository.checkArticle(title)
+    }
+
+
+
 
     fun insertNews(articles: Articles) = viewModelScope.launch {
          databaseRepository.insertNews(articles)

@@ -95,6 +95,8 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_active)
                 data!!.isBookmarked = true
                 viewModel.insertNews(data!!)
+
+
             } else {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_inactive)
                 viewModel.deleteNews(data!!.id)

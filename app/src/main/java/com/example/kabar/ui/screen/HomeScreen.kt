@@ -23,6 +23,7 @@ import com.example.kabar.model.Articles
 import com.example.kabar.model.NewsResponse
 import com.example.kabar.ui.viewmodel.HomeViewModel
 import com.example.kabar.ui.viewmodel.ItemViewModel
+import com.example.kabar.utils.Constants.Companion.TREND_NEWS
 import com.example.kabar.utils.KabarResult
 import com.example.kabar.utils.SelectableTopicsData
 import com.example.kabar.utils.TimeFormat.getTimeFormat
@@ -77,8 +78,8 @@ class HomeScreen : Fragment(R.layout.home_screen) {
 
 
     private fun trendingNews() {
-        viewModel.getTrendNews("technology")
-        viewModel.trendNewsLiveData.observe(viewLifecycleOwner, observer)
+        viewModel.getSearchNews(TREND_NEWS)
+        viewModel.searchNewsLiveData.observe(viewLifecycleOwner, observer)
     }
 
     private val observer = Observer<KabarResult<NewsResponse>> { value ->
@@ -110,9 +111,7 @@ class HomeScreen : Fragment(R.layout.home_screen) {
             binding.trendingInclude.trendHour.text = getTimeFormat(trendNews!!.publishedAt)
 
         }
-        else{
-            Snackbar.make(binding.root,"there aren't data",Snackbar.LENGTH_SHORT).show()
-        }
+
 
     }
 
@@ -172,7 +171,6 @@ class HomeScreen : Fragment(R.layout.home_screen) {
             })
         }else {
             spinClose()
-            Snackbar.make(binding.root,"${"Don't enter empty text!"}",Snackbar.LENGTH_SHORT).show()
         }
 
 

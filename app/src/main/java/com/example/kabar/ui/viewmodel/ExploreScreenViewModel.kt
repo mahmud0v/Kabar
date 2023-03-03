@@ -51,7 +51,7 @@ class ExploreScreenViewModel @Inject constructor(
 
     fun trendsNews(category: String) = viewModelScope.launch {
         trendNewsMutableLiveData.value = KabarResult.Loading()
-        networkNewsRepository.getTrendNews(category).collect {
+        networkNewsRepository.getSearchNews(category).collect {
             trendNewsMutableLiveData.value = it
         }
     }

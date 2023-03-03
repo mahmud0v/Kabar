@@ -17,6 +17,7 @@ class Constants {
         const val API_KEY1 = "f7474a66c6054ab7bdf44915b6852732"
         const val BASE_URL = "https://newsapi.org/"
         const val API_KEY2 = "69de666bd53b4f348c2e87a5bad0383f"
+        const val TREND_NEWS = "technology"
     }
 }
 

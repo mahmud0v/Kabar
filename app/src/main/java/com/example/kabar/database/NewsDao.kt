@@ -18,5 +18,8 @@ interface NewsDao {
     @Update
     suspend fun updateNews(articles: Articles)
 
+    @Query("SELECT *FROM Kabar WHERE title =:title")
+    suspend fun checkArticle(title: String): Articles?
+
 
 }
