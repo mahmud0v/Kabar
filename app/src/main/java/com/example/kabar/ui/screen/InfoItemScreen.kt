@@ -46,8 +46,17 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
             binding.newsContent.text = trimContent(data!!.content)
         }
 
-        checkLike(data!!.isLike)
-        checkBookmark(data!!.isBookmarked)
+        viewModel.checkArticleDB(data!!.title!!)
+        viewModel.checkArticleLiveData.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                checkLike(it.isLike)
+                checkBookmark(it.isBookmarked)
+            } else {
+                checkLike(data!!.isLike)
+                checkBookmark(data!!.isBookmarked)
+            }
+        })
+
     }
 
 
@@ -89,14 +98,18 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
 
     }
 
+
     private fun clickBookmark() {
         binding.bookmarked.setOnClickListener {
             if (!data!!.isBookmarked) {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_active)
                 data!!.isBookmarked = true
-                viewModel.insertNews(data!!)
-
-
+                viewModel.checkArticleDB(data!!.title!!)
+                viewModel.checkArticleLiveData.observe(viewLifecycleOwner, Observer {
+                    if (it == null) {
+                        viewModel.insertNews(data!!)
+                    }
+                })
             } else {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_inactive)
                 viewModel.deleteNews(data!!.id)

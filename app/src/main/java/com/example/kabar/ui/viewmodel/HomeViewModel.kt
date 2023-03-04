@@ -25,6 +25,8 @@ class HomeViewModel @Inject constructor(
     private val newsDatabaseMutableLiveData = MutableLiveData<List<Articles>>()
     val newsDatabaseLiveData: LiveData<List<Articles>> = newsDatabaseMutableLiveData
 
+    private val checkArticleMutableLiveData = MutableLiveData<Articles>()
+    val checkArticleLiveData: LiveData<Articles> = checkArticleMutableLiveData
 
 
     fun getTrendNews(category: String) = viewModelScope.launch {
@@ -47,25 +49,22 @@ class HomeViewModel @Inject constructor(
 
     }
 
-    fun checkArticleDB(title:String) = viewModelScope.launch {
-        databaseRepository.checkArticle(title)
+    fun checkArticleDB(title: String) = viewModelScope.launch {
+        checkArticleMutableLiveData.value = databaseRepository.checkArticle(title)
     }
-
-
 
 
     fun insertNews(articles: Articles) = viewModelScope.launch {
-         databaseRepository.insertNews(articles)
+        databaseRepository.insertNews(articles)
     }
 
-    fun deleteNews(id:Int) = viewModelScope.launch {
+    fun deleteNews(id: Int) = viewModelScope.launch {
         databaseRepository.deleteNews(id)
     }
 
     fun updateNews(articles: Articles) = viewModelScope.launch {
         databaseRepository.updateNews(articles)
     }
-
 
 
 }
