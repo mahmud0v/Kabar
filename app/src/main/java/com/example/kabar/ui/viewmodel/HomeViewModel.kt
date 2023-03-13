@@ -58,8 +58,8 @@ class HomeViewModel @Inject constructor(
         databaseRepository.insertNews(articles)
     }
 
-    fun deleteNews(id: Int) = viewModelScope.launch {
-        databaseRepository.deleteNews(id)
+    fun deleteNews(title: String) = viewModelScope.launch {
+        databaseRepository.deleteNews(title)
     }
 
     fun updateNews(articles: Articles) = viewModelScope.launch {

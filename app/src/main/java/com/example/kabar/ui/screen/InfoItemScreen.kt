@@ -104,17 +104,17 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
             if (!data!!.isBookmarked) {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_active)
                 data!!.isBookmarked = true
-                viewModel.checkArticleDB(data!!.title!!)
-                viewModel.checkArticleLiveData.observe(viewLifecycleOwner, Observer {
-                    if (it == null) {
-                        viewModel.insertNews(data!!)
-                    }
-                })
+                viewModel.insertNews(data!!)
+
+//                viewModel.checkArticleDB(data!!.title!!)
+//                viewModel.checkArticleLiveData.observe(viewLifecycleOwner, Observer {
+//                    if (it == null) {
+//                    }
+//                })
             } else {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_inactive)
-                viewModel.deleteNews(data!!.id)
+                viewModel.deleteNews(data!!.title!!)
                 data!!.isBookmarked = false
-
             }
 
 //            Toast.makeText(requireContext(),"${data!!.isBookmarked}",Toast.LENGTH_SHORT).show()
