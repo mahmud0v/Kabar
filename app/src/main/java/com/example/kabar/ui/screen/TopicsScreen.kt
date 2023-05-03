@@ -29,6 +29,8 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
         setLayoutManager()
         directionNextPage()
         saveCondition()
+        clickBackEvent()
+
     }
 
 
@@ -58,6 +60,15 @@ class TopicsScreen : Fragment(R.layout.select_topics_screen) {
             saveCondition()
             startActivity(Intent(requireContext(),MainActivity::class.java))
             requireActivity().finish()
+        }
+    }
+
+    private fun clickBackEvent(){
+        binding.backImg.setOnClickListener {
+            findNavController().popBackStack()
+            if (!findNavController().popBackStack()){
+                requireActivity().finish()
+            }
         }
     }
 
