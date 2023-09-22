@@ -31,9 +31,10 @@ class HomeViewModel @Inject constructor(
 
     fun getTrendNews(category: String) = viewModelScope.launch {
         trendNewsMutableLiveData.value = KabarResult.Loading()
-        networkRepository.getTrendNews(category).collect {
-            trendNewsMutableLiveData.value = it
-        }
+
+//        networkRepository.getTrendNews(category).collect {
+//            trendNewsMutableLiveData.value = it
+//        }
 
     }
 

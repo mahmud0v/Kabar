@@ -11,7 +11,6 @@ class NetworkNewsRepository @Inject constructor(
     private val remoteDataSource: NetworkRemoteDataSource
 ) {
 
-
     suspend fun getTrendNews(category:String): Flow<KabarResult<NewsResponse>> {
         val trendNews = remoteDataSource.getTrendNews(category)
         return if (trendNews.isSuccessful){

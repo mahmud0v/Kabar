@@ -41,6 +41,3 @@ fun Fragment.checkOnline(context: Context):Boolean{
     return false
 }
 
-//fun isOnline(context: Context): Boolean {
-//
-//}

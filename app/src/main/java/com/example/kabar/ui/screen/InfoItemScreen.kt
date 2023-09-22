@@ -1,7 +1,6 @@
 package com.example.kabar.ui.screen
 
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -14,13 +13,9 @@ import com.example.kabar.R
 import com.example.kabar.databinding.InfoItemScreenBinding
 import com.example.kabar.model.Articles
 import com.example.kabar.ui.viewmodel.HomeViewModel
-import com.example.kabar.ui.viewmodel.ItemViewModel
 import com.example.kabar.utils.TimeFormat.getTimeFormat
 import dagger.hilt.android.AndroidEntryPoint
-import org.ocpsoft.prettytime.PrettyTime
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.*
+
 
 @AndroidEntryPoint
 class InfoItemScreen : Fragment(R.layout.info_item_screen) {
@@ -105,19 +100,11 @@ class InfoItemScreen : Fragment(R.layout.info_item_screen) {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_active)
                 data!!.isBookmarked = true
                 viewModel.insertNews(data!!)
-
-//                viewModel.checkArticleDB(data!!.title!!)
-//                viewModel.checkArticleLiveData.observe(viewLifecycleOwner, Observer {
-//                    if (it == null) {
-//                    }
-//                })
-            } else {
+            }else {
                 binding.bookmarked.setImageResource(R.drawable.bookmark_icon_inactive)
                 viewModel.deleteNews(data!!.title!!)
                 data!!.isBookmarked = false
             }
-
-//            Toast.makeText(requireContext(),"${data!!.isBookmarked}",Toast.LENGTH_SHORT).show()
 
         }
     }

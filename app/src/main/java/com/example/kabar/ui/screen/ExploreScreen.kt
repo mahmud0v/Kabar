@@ -60,7 +60,7 @@ class ExploreScreen : Fragment(R.layout.explore_screen) {
     private fun initExploreTopic() {
         exploreAdapter = ExploreTopicAdapter()
         viewModel.getAllTopic()
-        newTopicList = listOf<ExploreTopic>()
+        newTopicList = listOf()
         viewModel.topicsLiveData.observe(viewLifecycleOwner, Observer {
             newTopicList = loadList(it)
             exploreAdapter!!.differ.submitList(randomList(newTopicList))
@@ -121,7 +121,7 @@ class ExploreScreen : Fragment(R.layout.explore_screen) {
     private fun loadList(list: List<ExploreTopicEntity>?): List<ExploreTopic> {
         val oldList = SelectableTopicsData.getExploreTopics().shuffled()
         val newList = ArrayList<ExploreTopic>()
-        if (list == null || list.isEmpty()) {
+        if (list.isNullOrEmpty()) {
             return oldList
         } else {
             for (i in oldList.indices) {
